@@ -1,0 +1,11 @@
+.Osoba {
+    width: 30%;
+    margin: auto;
+    border: 1px lavenderblush solid;
+    color: lavenderblush;
+    box-shadow: 0 2px 3x lightslategray;
+    padding: 20px;
+    text-align: center;
+    background-color:rgba(2, 32, 2, 0.719)
+  }
+  
