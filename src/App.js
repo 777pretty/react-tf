@@ -7,7 +7,7 @@ class App extends Component {
     osoby: [
       { id: 'qwes', meno: 'Kristof', lokacia: 'Nove Zamky' },
       { id: 'reqs', meno: 'Lucia', lokacia: 'Bratislava' },
-      { id: 'qqwe', meno: 'Karol', lokacia: 'Hlohovec' }
+      { id: 'qqwe', meno: 'Karol', lokacia: 'Svidnik' }
     ],
 
     ukazOsoby: false
