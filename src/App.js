@@ -9,10 +9,12 @@ class App extends Component {
       { id: 'reqs', meno: 'Lucia', lokacia: 'Bratislava' },
       { id: 'qqwe', meno: 'Karol', lokacia: 'Svidnik' }
     ],
-
+    
     ukazOsoby: false
     
   }
+
+
 
   Zmen = (event, id) => {
     const osobaIndex = this.state.osoby.findIndex(g => {
@@ -33,6 +35,8 @@ class App extends Component {
     })
 
   }
+
+  
  
 
 
