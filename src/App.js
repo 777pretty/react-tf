@@ -15,7 +15,6 @@ class App extends Component {
   }
 
 
-
   Zmen = (event, id) => {
     const osobaIndex = this.state.osoby.findIndex(g => {
       return g.id === id
@@ -24,7 +23,6 @@ class App extends Component {
     const osoba = {
       ...this.state.osoby[osobaIndex]
     }
-
     osoba.meno = event.target.value
 
     const osoby = [...this.state.osoby]
@@ -33,7 +31,6 @@ class App extends Component {
     this.setState({
       osoby: osoby
     })
-
   }
 
   
@@ -53,8 +50,8 @@ class App extends Component {
 
   render() {
     const styl = {
-      backgroundColor: 'grey',
-      font: 'Arial',
+      backgroundColor: 'white',
+      fontFamily: 'Calibri',
       fontSize: '18px',
       padding: '10px'
     }
@@ -72,9 +69,7 @@ class App extends Component {
             key={g.id}
             zmenena={(event) => this.Zmen(event, g.id)}
             /> 
-        )}
-        
-        
+        )} 
 
         {/* <Osoba meno={this.state.osoby[2].meno} 
         lokacia={this.state.osoby[2].lokacia} 
@@ -86,8 +81,12 @@ class App extends Component {
         lokacia={this.state.osoby[2].lokacia} 
         klikz={this.Zmen}
         />  */}
+
+
+
         </div>
       )
+      styl.backgroundColor = '#EEEEEE'
     }
 
     return (
@@ -97,7 +96,6 @@ class App extends Component {
         <br />
         <br />
         {osDis}
-        
       </div>
     );
   }
