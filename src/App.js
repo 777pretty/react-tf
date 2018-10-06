@@ -89,9 +89,21 @@ class App extends Component {
       styl.backgroundColor = '#EEEEEE'
     }
 
+    const klasik = []
+    if (this.state.osoby.length <= 2){
+      klasik.push('zelik')
+    }
+    if (this.state.osoby.length <= 1){
+      klasik.push('hrubik')
+    }
+    if (this.state.osoby.length <= 0){
+      klasik.push('velik')
+    }
+
     return (
       <div className="App">
       <br />
+        <p className={klasik.join(' ')}>fungujem</p>
         <button onClick={this.togglniOsobaHandler} style={styl}>Stlac!</button>
         <br />
         <br />
