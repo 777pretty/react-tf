@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Radium from 'radium'
+import Radium, { StyleRoot } from 'radium'
 import './App.css'
 import Osoba from './Osoba/Osoba'
 
@@ -107,6 +107,7 @@ class App extends Component {
     }
 
     return (
+     <StyleRoot>
       <div className="App">
       <br />
         <p className={klasik.join(' ')}>fungujem</p>
@@ -115,6 +116,7 @@ class App extends Component {
         <br />
         {osDis}
       </div>
+    </StyleRoot>
     )
   }
 }
