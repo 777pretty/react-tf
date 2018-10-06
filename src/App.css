@@ -1,4 +1,5 @@
-body { background-color: rgba(0, 26, 0, 0.719) }
+body { background-color: rgba(0, 26, 0, 0.719)
+         }
 
 .App {
   text-align: center;
@@ -10,24 +11,14 @@ body { background-color: rgba(0, 26, 0, 0.719) }
   padding: 10px;
 }
 
-/* .zelena {
-  color: green
-}
-
-.hruba {
-  font-weight: bold
-} */
-
 .zelik {
   color: green
 }
-
 .hrubik {
- font-weight: bold
+  font-weight: bold
 }
-
 .velik {
-  font-size: 24px
+  font-size: 20px
 }
 
 

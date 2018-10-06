@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import Radium from 'radium'
+import './App.css'
 import Osoba from './Osoba/Osoba'
 
 class App extends Component {
@@ -53,10 +54,14 @@ class App extends Component {
       backgroundColor: 'white',
       fontFamily: 'Calibri',
       fontSize: '18px',
-      padding: '10px'
+      padding: '10px',
+      cursor: 'pointer',
+      ':hover': {
+        color: 'goldenrod'
+      }
     }
 
-    let osDis = null;
+    let osDis = null
 
     if (this.state.ukazOsoby){
       osDis = (
@@ -87,6 +92,7 @@ class App extends Component {
         </div>
       )
       styl.backgroundColor = '#EEEEEE'
+      styl.color = 'goldenrod'
     }
 
     const klasik = []
@@ -109,8 +115,8 @@ class App extends Component {
         <br />
         {osDis}
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default Radium(App)

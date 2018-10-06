@@ -1,8 +1,11 @@
-import React from 'react';
-
-import './Osoba.css';
+import React from 'react'
+import Radium from 'radium'
+import './Osoba.css'
 
 const osoba = (props) => {
+    const styl = {
+        '@media ('
+    }
     return (
     <div className='Osoba'>
         <h4>Moje meno je {props.meno}.</h4>
