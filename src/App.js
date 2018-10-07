@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Radium, { StyleRoot } from 'radium'
 import './App.css'
 import Osoba from './Osoba/Osoba'
 
@@ -55,10 +54,7 @@ class App extends Component {
       fontFamily: 'Calibri',
       fontSize: '18px',
       padding: '10px',
-      cursor: 'pointer',
-      ':hover': {
-        color: 'goldenrod'
-      }
+      cursor: 'pointer'
     }
 
     let osDis = null
@@ -107,7 +103,6 @@ class App extends Component {
     }
 
     return (
-     <StyleRoot>
       <div className="App">
       <br />
         <p className={klasik.join(' ')}>fungujem</p>
@@ -116,9 +111,9 @@ class App extends Component {
         <br />
         {osDis}
       </div>
-    </StyleRoot>
     )
   }
 }
 
-export default Radium(App)
+
+export default App
