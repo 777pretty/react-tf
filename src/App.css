@@ -11,6 +11,7 @@ body { background-color: rgba(0, 26, 0, 0.719)
   padding: 10px;
 }
 
+
 .zelik {
   color: green
 }
@@ -21,8 +22,36 @@ body { background-color: rgba(0, 26, 0, 0.719)
   font-size: 20px
 }
 
+.App button {
+  font: inherit;
+  padding: 10px;
+  padding-left: 8px;
+  padding-right: 8px
+}
 
+/* .App button:hover {
+  background-color: lightgreen;
+}
 
+.App button.Zakliknuty {
+  background-color: darkcyan;
+}
+
+.App button.Zakliknuty:hover {
+  background-color: aquamarine
+} */
+
+.App button:hover {
+  background-color: lightgreen;
+}
+
+.App button.Zakliknuty {
+  background-color: darkcyan
+}
+
+.App button.Zakliknuty:hover {
+  background-color: aquamarine
+}
 
 
 

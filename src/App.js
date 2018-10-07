@@ -49,15 +49,10 @@ class App extends Component {
   }
 
   render() {
-    const styl = {
-      backgroundColor: 'white',
-      fontFamily: 'Calibri',
-      fontSize: '18px',
-      padding: '10px',
-      cursor: 'pointer'
-    }
+    
 
     let osDis = null
+    let buttonKlas = ''
 
     if (this.state.ukazOsoby){
       osDis = (
@@ -87,8 +82,7 @@ class App extends Component {
 
         </div>
       )
-      styl.backgroundColor = '#EEEEEE'
-      styl.color = 'goldenrod'
+      buttonKlas = zKlas.Zakliknuty
     }
 
     const klasik = []
@@ -106,7 +100,7 @@ class App extends Component {
       <div className={zKlas.App}>
       <br />
         <p className={klasik.join(' ')}>fungujem</p>
-        <button onClick={this.togglniOsobaHandler} style={styl}>Stlac!</button>
+        <button className={buttonKlas} onClick={this.togglniOsobaHandler} >Stlac!</button>
         <br />
         <br />
         {osDis}
