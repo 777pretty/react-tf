@@ -4,8 +4,8 @@ import './Osoba.css'
 
 const osoba = (props) => {
     const styl = {
-        '@media (min-width: 600px)':{
-            width: '300px'
+        '@media (min-width: 500px)': {
+            width: '550px'
         }
     }
     return (
