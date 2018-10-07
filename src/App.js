@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './App.css'
+import zKlas from './App.css'
 import Osoba from './Osoba/Osoba'
 
 class App extends Component {
@@ -93,17 +93,17 @@ class App extends Component {
 
     const klasik = []
     if (this.state.osoby.length <= 2){
-      klasik.push('zelik')
+      klasik.push(zKlas.zelik)
     }
     if (this.state.osoby.length <= 1){
-      klasik.push('hrubik')
+      klasik.push(zKlas.hrubik)
     }
     if (this.state.osoby.length <= 0){
-      klasik.push('velik')
+      klasik.push(zKlas.velik)
     }
 
     return (
-      <div className="App">
+      <div className={zKlas.App}>
       <br />
         <p className={klasik.join(' ')}>fungujem</p>
         <button onClick={this.togglniOsobaHandler} style={styl}>Stlac!</button>

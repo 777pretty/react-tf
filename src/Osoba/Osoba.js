@@ -1,9 +1,9 @@
 import React from 'react'
-import './Osoba.css'
+import zKlas from './Osoba.css'
 
 const osoba = (props) => {
     return (
-    <div className='Osoba'>
+    <div className={zKlas.Osoba}>
         <h4>Moje meno je {props.meno}.</h4>
         <p onClick={props.clique}>Pochadzam z {props.lokacia}. A mam {Math.floor(Math.random()*100)} rokov lmao.</p>
         <h1>{props.children}</h1>
