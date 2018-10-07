@@ -11,3 +11,8 @@
     margin-bottom: 8px
   }
   
+  @media (min-width: 600px){
+    .Osoba {
+      width: 520px
+    }
+  }

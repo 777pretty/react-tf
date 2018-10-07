@@ -1,6 +1,11 @@
 import React from 'react'
 import zKlas from './Osoba.css'
 
+const cislo = Math.random()
+ if (cislo > 0.75) {
+     throw new Error('System has failed')
+ }
+
 const osoba = (props) => {
     return (
     <div className={zKlas.Osoba}>
