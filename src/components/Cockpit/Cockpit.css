@@ -1,0 +1,29 @@
+
+.zelik {
+    color: green
+  }
+  .hrubik {
+    font-weight: bold
+  }
+  .velik {
+    font-size: 20px
+  }
+  
+  .Cockpit button {
+    font: inherit;
+    padding: 10px;
+    padding-left: 8px;
+    padding-right: 8px
+  }
+  
+  .Cockpit button:hover {
+    background-color: lightgreen;
+  }
+  
+  .Cockpit button.Zakliknuty {
+    background-color: darkcyan
+  }
+  
+  .Cockpit button.Zakliknuty:hover {
+    background-color: aquamarine
+  }

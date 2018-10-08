@@ -29,18 +29,6 @@ body { background-color: rgba(0, 26, 0, 0.719)
   padding-right: 8px
 }
 
-/* .App button:hover {
-  background-color: lightgreen;
-}
-
-.App button.Zakliknuty {
-  background-color: darkcyan;
-}
-
-.App button.Zakliknuty:hover {
-  background-color: aquamarine
-} */
-
 .App button:hover {
   background-color: lightgreen;
 }

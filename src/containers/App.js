@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import zKlas from './App.css'
-import Osoba from '../components/Osoby/Osoba/Osoba'
+import Osoby from '../components/Osoby/Osoby'
+import Cockpit from '../components/Cockpit/Cockpit'
 
 class App extends Component {
   state = {
@@ -15,27 +16,20 @@ class App extends Component {
   }
 
 
-  Zmen = (event, id) => {
+  zmen = (event, id) => {
     const osobaIndex = this.state.osoby.findIndex(g => {
       return g.id === id
     })
-
     const osoba = {
       ...this.state.osoby[osobaIndex]
     }
     osoba.meno = event.target.value
-
     const osoby = [...this.state.osoby]
     osoby[osobaIndex] = osoba
-
     this.setState({
       osoby: osoby
     })
   }
-
-  
- 
-
 
   togglniOsobaHandler = () => {
     const ukazuje = this.state.ukazOsoby
@@ -49,60 +43,22 @@ class App extends Component {
   }
 
   render() {
-    
 
     let osDis = null
-    let buttonKlas = ''
 
     if (this.state.ukazOsoby){
       osDis = (
-        <div>
-        {this.state.osoby.map((g, index) =>
-            <Osoba 
-            clique={() => this.zmazOsobaHandler(index)}
-            meno={g.meno} 
-            lokacia={g.lokacia}
-            key={g.id}
-            zmenena={(event) => this.Zmen(event, g.id)}
-            /> 
-        )} 
-
-        {/* <Osoba meno={this.state.osoby[2].meno} 
-        lokacia={this.state.osoby[2].lokacia} 
-        klikz={this.Zmen}
-        />
-        <br />
-
-        <Osoba meno={this.state.osoby[2].meno} 
-        lokacia={this.state.osoby[2].lokacia} 
-        klikz={this.Zmen}
-        />  */}
-
-
-
-        </div>
+        <Osoby osoby={this.state.osoby} 
+               clique={this.zmazOsobaHandler} 
+               zmenena={this.zmen}/>
       )
-      buttonKlas = zKlas.Zakliknuty
-    }
-
-    const klasik = []
-    if (this.state.osoby.length <= 2){
-      klasik.push(zKlas.zelik)
-    }
-    if (this.state.osoby.length <= 1){
-      klasik.push(zKlas.hrubik)
-    }
-    if (this.state.osoby.length <= 0){
-      klasik.push(zKlas.velik)
     }
 
     return (
       <div className={zKlas.App}>
-      <br />
-        <p className={klasik.join(' ')}>fungujem</p>
-        <button className={buttonKlas} onClick={this.togglniOsobaHandler} >Stlac!</button>
-        <br />
-        <br />
+        <Cockpit ukazOsoby={this.state.ukazOsoby} 
+                 osoby={this.state.osoby} 
+                 buttonKlik={this.togglniOsobaHandler}/>
         {osDis}
       </div>
     )
