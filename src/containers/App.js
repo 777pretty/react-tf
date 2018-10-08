@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import zKlas from './App.css'
-import Osoba from './Osoba/Osoba'
+import Osoba from '../components/Osoby/Osoba/Osoba'
 
 class App extends Component {
   state = {
