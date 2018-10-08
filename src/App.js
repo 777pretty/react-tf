@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import zKlas from './App.css'
 import Osoba from './Osoba/Osoba'
-import ChybaBoundary from './ChybaBoundary/ChybaBoundary'
 
 class App extends Component {
   state = {
@@ -59,7 +58,6 @@ class App extends Component {
       osDis = (
         <div>
         {this.state.osoby.map((g, index) =>
-          <ChybaBoundary key={g.id}>
             <Osoba 
             clique={() => this.zmazOsobaHandler(index)}
             meno={g.meno} 
@@ -67,7 +65,6 @@ class App extends Component {
             key={g.id}
             zmenena={(event) => this.Zmen(event, g.id)}
             /> 
-          </ChybaBoundary>
         )} 
 
         {/* <Osoba meno={this.state.osoby[2].meno} 
