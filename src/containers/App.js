@@ -4,6 +4,18 @@ import Osoby from '../components/Osoby/Osoby'
 import Cockpit from '../components/Cockpit/Cockpit'
 
 class App extends Component {
+  constructor(props){
+    super(props)
+    console.log('SCoopidty scoop xx in constructor', props)
+  }
+
+  componentWillMount(){
+    console.log('SCOOP SCOOP xx in component will mount')
+  }
+  componentDidMount(){
+    console.log('scupity xx in component did mount')
+  }
+
   state = {
     osoby: [
       { id: 'qwes', meno: 'Kristof', lokacia: 'Nove Zamky' },
@@ -43,6 +55,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('doot doot xx inside render ')
 
     let osDis = null
 
