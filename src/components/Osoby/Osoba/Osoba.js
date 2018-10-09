@@ -15,4 +15,5 @@ const osoba = (props) => {
 
 export default osoba
 
-//x1
+// xaras
+// x1 --
