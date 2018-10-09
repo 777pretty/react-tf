@@ -14,7 +14,10 @@ class Osoby extends Component {
       }
       shouldComponentUpdate(nextProps, nextState){
         console.log('LETS get it on xx in should component update', nextProps, nextState)
-        return nextProps.osoby !== this.props.osoby
+        return nextProps.osoby !== this.props.osoby ||
+               nextProps.clique !== this.props.clique ||
+               nextProps.zmenena !== this.props.zmenena
+        // return true
       }
       componentWillUpdate(nextProps, nextState){
         console.log('DADADA DA DA xx component will update', nextProps, nextState)

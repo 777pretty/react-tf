@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import zKlas from './App.css'
 import Osoby from '../components/Osoby/Osoby'
 import Cockpit from '../components/Cockpit/Cockpit'
 
-class App extends Component {
+class App extends PureComponent {
   constructor(props){
     super(props)
     console.log('SCoopidty scoop xx in constructor', props)
@@ -16,10 +16,11 @@ class App extends Component {
     console.log('scupity xx in component did mount')
   }
 
-  shouldComponentUpdate(nextProps, nextState){
-    console.log('LETS get it on xx in should component update', nextProps, nextState)
-    return true
-  }
+  // shouldComponentUpdate(nextProps, nextState){
+  //   console.log('LETS get it on xx in should component update', nextProps, nextState)
+  //   return nextState.osoby !== this.state.osoby ||
+  //          nextState.ukazOsoby !== this.state.ukazOsoby
+  // }
   componentWillUpdate(nextProps, nextState){
     console.log('DADADA DA DA xx component will update', nextProps, nextState)
   }
@@ -80,6 +81,7 @@ class App extends Component {
 
     return (
       <div className={zKlas.App}>
+        <button onClick={()=>{this.setState({ukazOsoby: true})}}>Ukaz osoby</button>
         <Cockpit ukazOsoby={this.state.ukazOsoby} 
                  osoby={this.state.osoby} 
                  buttonKlik={this.togglniOsobaHandler}/>
