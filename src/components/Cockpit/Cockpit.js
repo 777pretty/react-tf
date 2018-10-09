@@ -2,7 +2,6 @@ import React from 'react'
 import zKlas from './Cockpit.css'
 
 
-//test 
 
 const cockpit = (props) => {
     const klasik = []
