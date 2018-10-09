@@ -14,3 +14,5 @@ const osoba = (props) => {
 }
 
 export default osoba
+
+//x1
