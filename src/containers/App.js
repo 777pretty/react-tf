@@ -16,6 +16,17 @@ class App extends Component {
     console.log('scupity xx in component did mount')
   }
 
+  shouldComponentUpdate(nextProps, nextState){
+    console.log('LETS get it on xx in should component update', nextProps, nextState)
+    return true
+  }
+  componentWillUpdate(nextProps, nextState){
+    console.log('DADADA DA DA xx component will update', nextProps, nextState)
+  }
+  componentDidUpdate(prevProps, prevState){
+    console.log('da da xx component did update', prevProps, prevState)
+  }
+
   state = {
     osoby: [
       { id: 'qwes', meno: 'Kristof', lokacia: 'Nove Zamky' },
