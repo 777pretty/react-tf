@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import zKlas from './App.css'
 import Osoby from '../components/Osoby/Osoby'
 import Cockpit from '../components/Cockpit/Cockpit'
+import Zklasou from '../hoc/Zklasou'
 
 class App extends PureComponent {
   constructor(props){
@@ -80,13 +81,13 @@ class App extends PureComponent {
     }
 
     return (
-      <div className={zKlas.App}>
+      <Zklasou zKlas={zKlas.App}>
         <button onClick={()=>{this.setState({ukazOsoby: true})}}>Ukaz osoby</button>
         <Cockpit ukazOsoby={this.state.ukazOsoby} 
                  osoby={this.state.osoby} 
                  buttonKlik={this.togglniOsobaHandler}/>
         {osDis}
-      </div>
+      </Zklasou>
     )
   }
 }
