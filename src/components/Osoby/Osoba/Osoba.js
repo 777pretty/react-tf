@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
+
 import zKlas from './Osoba.css'
 import zklasou from '../../../hoc/zklasou'
 
@@ -17,6 +19,13 @@ class Osoba extends Component {
     }
 }
 
+
+Osoba.propTypes = {
+    cliquek: PropTypes.func,
+    meno: PropTypes.string,
+    lokacia: PropTypes.string,
+    zmenena: PropTypes.func
+}
 
 export default zklasou(Osoba, zKlas.Osoba)
 

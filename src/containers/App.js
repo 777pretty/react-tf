@@ -1,9 +1,12 @@
 import React, { PureComponent } from 'react'
+
 import zKlas from './App.css'
 import Osoby from '../components/Osoby/Osoby'
 import Cockpit from '../components/Cockpit/Cockpit'
 import Aukz from '../hoc/Aukz'
 import zklasou from '../hoc/zklasou'
+
+
 
 class App extends PureComponent {
   constructor(props){
@@ -37,8 +40,8 @@ class App extends PureComponent {
       { id: 'qqwe', meno: 'Karol', lokacia: 'Svidnik' }
     ],
     
-    ukazOsoby: false
-    
+    ukazOsoby: false,
+    togglKliknuty: 0
   }
 
 
@@ -59,7 +62,12 @@ class App extends PureComponent {
 
   togglniOsobaHandler = () => {
     const ukazuje = this.state.ukazOsoby
-    this.setState({ukazOsoby: !ukazuje})
+    this.setState((prevState, props) => {
+      return {
+             ukazOsoby: !ukazuje,
+             togglKliknuty: prevState.togglniKlikom + 1
+      }
+    })
   }
 
   zmazOsobaHandler = (osobyIndex) => {
