@@ -19,13 +19,13 @@ const cockpit = (props) => {
         buttonKlas = [zKlas.Button, zKlas.Zakliknuty].join(' ')
     }
     return(
-    <Aux>
+    <Aukz>
         <br />
         <p className={klasik.join(' ')}>fungujem</p>
         <button className={buttonKlas} onClick={props.buttonKlik} >Stlac!</button>
         <br />
         <br />
-        </Aux>
+        </Aukz>
     )
 }
 
