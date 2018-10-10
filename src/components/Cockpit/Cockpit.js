@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import zKlas from './Cockpit.css'
-import Aux from '../../hoc/Aukz'
 
 
 const cockpit = (props) => {
@@ -19,13 +18,13 @@ const cockpit = (props) => {
         buttonKlas = [zKlas.Button, zKlas.Zakliknuty].join(' ')
     }
     return(
-    <Aukz>
+    <Fragment>
         <br />
         <p className={klasik.join(' ')}>fungujem</p>
         <button className={buttonKlas} onClick={props.buttonKlik} >Stlac!</button>
         <br />
         <br />
-        </Aukz>
+    </Fragment>
     )
 }
 
