@@ -1,22 +1,22 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import zKlas from './Osoba.css'
-import Zklasou from '../../../hoc/Zklasou'
+import zklasou from '../../../hoc/zklasou'
 
 
 class Osoba extends Component {
     render(){
     
     return (
-    <Zklasou zKlas={zKlas.Osoba}>
+    <Fragment>
     <h4>Moje meno je {this.props.meno}.</h4>
     <p onClick={this.props.clique}>Pochadzam z {this.props.lokacia}. A mam {Math.floor(Math.random()*100)} rokov lmao.</p>
     <h1>{this.props.children}</h1>
     <input type='text' onChange={this.props.zmenena} value={this.props.meno} />
-    </Zklasou>
+    </Fragment>
     )
     }
 }
 
 
-export default Osoba
+export default zklasou(Osoba, zKlas.Osoba)
 

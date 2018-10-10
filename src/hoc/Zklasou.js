@@ -1,9 +1,11 @@
 import React from 'react'
 
-const Zklasou = (props) => (
-    <div className={props.zKlas}>
-        {props.children}
+const zklasou = (ObalenyKomponent, nazovKlasy) => {
+    return (props) => (
+    <div className={nazovKlasy}>
+        <ObalenyKomponent {...props} />
     </div>
-)
+    )
+}
 
-export default Zklasou
+export default zklasou

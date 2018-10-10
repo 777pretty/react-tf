@@ -2,7 +2,8 @@ import React, { PureComponent } from 'react'
 import zKlas from './App.css'
 import Osoby from '../components/Osoby/Osoby'
 import Cockpit from '../components/Cockpit/Cockpit'
-import Zklasou from '../hoc/Zklasou'
+import Aukz from '../hoc/Aukz'
+import zklasou from '../hoc/zklasou'
 
 class App extends PureComponent {
   constructor(props){
@@ -81,16 +82,16 @@ class App extends PureComponent {
     }
 
     return (
-      <Zklasou zKlas={zKlas.App}>
+      <Aukz>
         <button onClick={()=>{this.setState({ukazOsoby: true})}}>Ukaz osoby</button>
         <Cockpit ukazOsoby={this.state.ukazOsoby} 
                  osoby={this.state.osoby} 
                  buttonKlik={this.togglniOsobaHandler}/>
         {osDis}
-      </Zklasou>
+     </Aukz>
     )
   }
 }
 
 
-export default App
+export default zklasou(App, zKlas.App)
