@@ -1,6 +1,6 @@
 import React from 'react'
 import zKlas from './Cockpit.css'
-
+import Aux from '../../hoc/Aukz'
 
 
 const cockpit = (props) => {
@@ -16,16 +16,16 @@ const cockpit = (props) => {
     }
     let buttonKlas = ''
     if (props.ukazOsoby){
-        buttonKlas = zKlas.zakliknuty
+        buttonKlas = [zKlas.Button, zKlas.Zakliknuty].join(' ')
     }
     return(
-    <div className={zKlas.Cockpit}>
+    <Aux>
         <br />
         <p className={klasik.join(' ')}>fungujem</p>
         <button className={buttonKlas} onClick={props.buttonKlik} >Stlac!</button>
         <br />
         <br />
-    </div>
+        </Aux>
     )
 }
 

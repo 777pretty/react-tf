@@ -9,21 +9,21 @@
     font-size: 20px
   }
   
-  .Cockpit button {
+  .Button {
     font: inherit;
     padding: 10px;
     padding-left: 8px;
     padding-right: 8px
   }
   
-  .Cockpit button:hover {
+  .Button:hover {
     background-color: lightgreen;
   }
   
-  .Cockpit button.Zakliknuty {
+  .Button.Zakliknuty {
     background-color: darkcyan
   }
   
-  .Cockpit button.Zakliknuty:hover {
+  .Button.Zakliknuty:hover {
     background-color: aquamarine
   }
