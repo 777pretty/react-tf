@@ -87,7 +87,7 @@
       "mjs"
     ]
   },
-  "babel": {
+  "babel": { 
     "presets": [
       "react-app"
     ]
