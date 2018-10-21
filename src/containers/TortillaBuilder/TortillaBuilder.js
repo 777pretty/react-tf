@@ -24,7 +24,19 @@ class TortillaBuilder extends Component {
             cheese: 0,
             meat: 0
         },
-        totalCost: 2.30
+        totalCost: 2.30,
+        orderable: false
+    }
+
+    updateOrderableState(ingredients){
+        const total = Object.keys(ingredients)
+            .map(ingKey => {
+                return ingredients[ingKey]
+            })
+            .reduce((total, el) => {
+                return total + el
+            }, 0)
+            this.setState({orderable: total > 0})
     }
 
     addIngHandler = (type) => {
@@ -41,6 +53,7 @@ class TortillaBuilder extends Component {
             totalCost: newCost, 
             ingredients: updIngredients
         })
+        this.updateOrderableState(updIngredients)
         }
     
 
@@ -61,7 +74,7 @@ class TortillaBuilder extends Component {
             totalCost: newCost, 
             ingredients: updIngredients
         })
-
+        this.updateOrderableState(updIngredients)
     }
 
     render() {
@@ -78,7 +91,8 @@ class TortillaBuilder extends Component {
                     ingAdded={this.addIngHandler}
                     ingRemoved={this.removeIngHandler}
                     disabled={disabledInf}
-                    cost={this.state.totalCost}/>
+                    cost={this.state.totalCost}
+                    orderable={this.state.orderable}/>
             </Aukz>
         );
     }
