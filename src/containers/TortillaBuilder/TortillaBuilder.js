@@ -44,16 +44,33 @@ class TortillaBuilder extends Component {
         }
     
 
-    // removeIngHandler = (type) => {
+    removeIngHandler = (type) => {
+        const oldCount = this.state.ingredients[type]
+        if (oldCount <= 0){
+            return
+        }
+        const updCount = oldCount - 1
+        const updIngredients = {
+            ...this.state.ingredients
+        }
+        updIngredients[type] = updCount
+        const costReduction = ING_COST[type]
+        const oldCost = this.state.totalCost
+        const newCost = oldCost - costReduction
+        this.setState({
+            totalCost: newCost, 
+            ingredients: updIngredients
+        })
 
-    // }
+    }
 
     render() {
         return (
             <Aukz>
                 <Tortilla ingredients={this.state.ingredients} />
                 <BuildControls 
-                    ingAdded={this.addIngHandler}/>
+                    ingAdded={this.addIngHandler}
+                    ingRemoved={this.removeIngHandler}/>
             </Aukz>
         );
     }

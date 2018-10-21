@@ -16,7 +16,8 @@ const buildControls = (props) => (
         {controls.map(controlla => (
             <BuildControl key={controlla.label} 
                           label={controlla.label}
-                          added={() => props.ingAdded(controlla.type)}/>
+                          added={() => props.ingAdded(controlla.type)}
+                          removed={() => props.ingRemoved(controlla.type)}/>
         ))}
         
     </div>
