@@ -10,10 +10,10 @@ class TortillaBuilder extends Component {
     // }
     state = {
         ingredients: {
-            salad: 0,
+            salad: 2,
             bacon: 0,
-            cheese: 0,
-            meat: 0
+            cheese: 1,
+            meat: 1
         }
     }
 
