@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import Aukz from '../../hoc/Aukz';
 import Tortilla from '../../components/Tortilla/Tortilla';
 import BuildControls from '../../components/Tortilla/BuildControls/BuildControls'
+import Modal from '../../components/UI/Modal/Modal'
+import OrderReview from '../../components/Tortilla/OrderReview/OrderReview'
 
 
 const ING_COST = {
@@ -25,7 +27,8 @@ class TortillaBuilder extends Component {
             meat: 0
         },
         totalCost: 2.30,
-        orderable: false
+        orderable: false,
+        reviewing: false
     }
 
     updateOrderableState(ingredients){
@@ -77,6 +80,12 @@ class TortillaBuilder extends Component {
         this.updateOrderableState(updIngredients)
     }
 
+    reviewHandler = () => {
+        this.setState({
+            reviewing: true
+        })
+    }
+
     render() {
         const disabledInf = {
             ...this.state.ingredients
@@ -86,12 +95,16 @@ class TortillaBuilder extends Component {
         }
         return (
             <Aukz>
+                <Modal disp={this.state.reviewing}>
+                    <OrderReview ingredients={this.state.ingredients} />    
+                </Modal>
                 <Tortilla ingredients={this.state.ingredients} />
                 <BuildControls 
                     ingAdded={this.addIngHandler}
                     ingRemoved={this.removeIngHandler}
                     disabled={disabledInf}
                     cost={this.state.totalCost}
+                    ordered={this.reviewHandler}
                     orderable={this.state.orderable}/>
             </Aukz>
         );
