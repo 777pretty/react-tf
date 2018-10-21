@@ -65,12 +65,19 @@ class TortillaBuilder extends Component {
     }
 
     render() {
+        const disabledInf = {
+            ...this.state.ingredients
+        }
+        for (let key in disabledInf){
+            disabledInf[key] = disabledInf[key] <= 0
+        }
         return (
             <Aukz>
                 <Tortilla ingredients={this.state.ingredients} />
                 <BuildControls 
                     ingAdded={this.addIngHandler}
-                    ingRemoved={this.removeIngHandler}/>
+                    ingRemoved={this.removeIngHandler}
+                    disabled={disabledInf}/>
             </Aukz>
         );
     }
