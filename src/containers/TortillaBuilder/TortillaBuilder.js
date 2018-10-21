@@ -24,7 +24,7 @@ class TortillaBuilder extends Component {
             cheese: 0,
             meat: 0
         },
-        totalCost: 3.30
+        totalCost: 2.30
     }
 
     addIngHandler = (type) => {
@@ -54,9 +54,9 @@ class TortillaBuilder extends Component {
             ...this.state.ingredients
         }
         updIngredients[type] = updCount
-        const costReduction = ING_COST[type]
+        const costDeduction = ING_COST[type]
         const oldCost = this.state.totalCost
-        const newCost = oldCost - costReduction
+        const newCost = oldCost - costDeduction
         this.setState({
             totalCost: newCost, 
             ingredients: updIngredients
@@ -77,7 +77,8 @@ class TortillaBuilder extends Component {
                 <BuildControls 
                     ingAdded={this.addIngHandler}
                     ingRemoved={this.removeIngHandler}
-                    disabled={disabledInf}/>
+                    disabled={disabledInf}
+                    cost={this.state.totalCost}/>
             </Aukz>
         );
     }
