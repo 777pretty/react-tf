@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Aukz from '../../hoc/Aukz';
 import Tortilla from '../../components/Tortilla/Tortilla';
+import BuildControls from '../../components/Tortilla/BuildControls/BuildControls'
 
 class TortillaBuilder extends Component {
     // constructor(props) {
@@ -21,7 +22,7 @@ class TortillaBuilder extends Component {
         return (
             <Aukz>
                 <Tortilla ingredients={this.state.ingredients} />
-                <div>Build Controls</div>
+                <BuildControls />
             </Aukz>
         );
     }
