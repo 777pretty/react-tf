@@ -86,6 +86,12 @@ class TortillaBuilder extends Component {
         })
     }
 
+    reviewOutHandler = () => {
+        this.setState({
+            reviewing: false
+        })
+    }
+
     render() {
         const disabledInf = {
             ...this.state.ingredients
@@ -95,7 +101,7 @@ class TortillaBuilder extends Component {
         }
         return (
             <Aukz>
-                <Modal disp={this.state.reviewing}>
+                <Modal disp={this.state.reviewing} modalOut={this.reviewOutHandler}>
                     <OrderReview ingredients={this.state.ingredients} />    
                 </Modal>
                 <Tortilla ingredients={this.state.ingredients} />
