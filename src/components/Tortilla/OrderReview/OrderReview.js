@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Aukz from '../../../hoc/Aukz'
+import Button from '../../UI/Button/Button'
 
 const orderReview = (props) => {
     const ingredientsReview = Object.keys(props.ingredients)
