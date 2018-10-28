@@ -93,7 +93,7 @@ class TortillaBuilder extends Component {
     }
 
     reviewContinueHandler = () => {
-        alert('You continue!!!')
+        alert('You have selected continue.')
     }
 
     render() {
