@@ -16,8 +16,8 @@ const orderReview = (props) => {
                 {ingredientsReview}
              </ul>
              <p>Proceed to checkout?</p>
-            <Button>Cancel</Button>
-            <Button>Continue</Button>
+            <Button buttonType="Danger" clickd={props.reviewCanceled}>Cancel</Button>
+            <Button buttonType="Success" clickd={props.reviewContinue}>Continue</Button>
            </Aukz>
 
 }

@@ -92,6 +92,10 @@ class TortillaBuilder extends Component {
         })
     }
 
+    reviewContinueHandler = () => {
+        alert('You continue!!!')
+    }
+
     render() {
         const disabledInf = {
             ...this.state.ingredients
@@ -102,7 +106,9 @@ class TortillaBuilder extends Component {
         return (
             <Aukz>
                 <Modal disp={this.state.reviewing} modalOut={this.reviewOutHandler}>
-                    <OrderReview ingredients={this.state.ingredients} />    
+                    <OrderReview ingredients={this.state.ingredients}
+                                 reviewCanceled={this.reviewOutHandler}
+                                 reviewContinue={this.reviewContinueHandler} />    
                 </Modal>
                 <Tortilla ingredients={this.state.ingredients} />
                 <BuildControls 
