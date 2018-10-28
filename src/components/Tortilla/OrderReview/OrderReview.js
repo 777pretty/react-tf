@@ -14,7 +14,9 @@ const orderReview = (props) => {
              <ul>
                 {ingredientsReview}
              </ul>
-             <p>Proceed to checkout</p>
+             <p>Proceed to checkout?</p>
+            <button>Cancel</button>
+            <button>Continue</button>
            </Aukz>
 
 }
