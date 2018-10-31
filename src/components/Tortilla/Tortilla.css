@@ -7,6 +7,6 @@
     font-weight: bold;
     font-size: 1.2rem;
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y: auto;
 }
 
