@@ -15,7 +15,7 @@ const orderReview = (props) => {
              <ul>
                 {ingredientsReview}
              </ul>
-             <p>Total cost: {props.totalCost}€</p>
+             <p><strong>Total cost: {props.totalCost}€</strong></p>
              <p>Proceed to checkout?</p>
             <Button buttonType="Danger" clickd={props.reviewCanceled}>Cancel</Button>
             <Button buttonType="Success" clickd={props.reviewContinue}>Continue</Button>

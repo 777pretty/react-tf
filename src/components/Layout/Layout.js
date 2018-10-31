@@ -1,18 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import Aukz from '../../hoc/Aukz';
 import classes from './Layout.css';
 import Toolbar from '../Navigation/Toolbar/Toolbar'
 import SideDrawer from '../Navigation/SideDrawer/SideDrawer'
 
-const layout = ( props ) => (
+class Layout extends Component {
+
+    state = {
+        dispSideDrawer: true
+    }
+
+    sideDrawerShutHandler = () => {
+        this.setState({
+            dispSideDrawer: false
+        })
+    }
+
+    render(){
+    return(
     <Aukz>
         <Toolbar />
-        <SideDrawer />
+        <SideDrawer open={this.state.dispSideDrawer} 
+                    shut={this.sideDrawerShutHandler}/>
         <main className={classes.Content}>
-            {props.children}
+            {this.props.children}
         </main>
     </Aukz>
-);
+    )
+}
+};
 
-export default layout;
+export default Layout;
