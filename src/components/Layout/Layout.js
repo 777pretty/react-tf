@@ -8,8 +8,14 @@ import SideDrawer from '../Navigation/SideDrawer/SideDrawer'
 class Layout extends Component {
 
     state = {
-        dispSideDrawer: true
+        dispSideDrawer: false
     }
+
+    sideDrawerOpenHandler = () => {
+        this.setState({
+            dispSideDrawer: true
+        })
+    }    
 
     sideDrawerShutHandler = () => {
         this.setState({
@@ -20,9 +26,10 @@ class Layout extends Component {
     render(){
     return(
     <Aukz>
-        <Toolbar />
+        <Toolbar offnen={this.sideDrawerOpenHandler}/>
         <SideDrawer open={this.state.dispSideDrawer} 
-                    shut={this.sideDrawerShutHandler}/>
+                    shut={this.sideDrawerShutHandler}
+                    onClick={this.sideDrawerShutHandler}/>
         <main className={classes.Content}>
             {this.props.children}
         </main>
