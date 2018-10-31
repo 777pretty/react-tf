@@ -108,7 +108,8 @@ class TortillaBuilder extends Component {
                 <Modal disp={this.state.reviewing} modalOut={this.reviewOutHandler}>
                     <OrderReview ingredients={this.state.ingredients}
                                  reviewCanceled={this.reviewOutHandler}
-                                 reviewContinue={this.reviewContinueHandler} />    
+                                 reviewContinue={this.reviewContinueHandler} 
+                                 totalCost={this.state.totalCost.toFixed(2)}/>    
                 </Modal>
                 <Tortilla ingredients={this.state.ingredients} />
                 <BuildControls 
