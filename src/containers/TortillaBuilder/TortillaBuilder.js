@@ -9,9 +9,10 @@ import OrderReview from '../../components/Tortilla/OrderReview/OrderReview'
 
 const ING_COST = {
     salad: 0.5,
-    cheese: 0.5,
+    dressing: 0.5,
     meat: 0.9,    //high quality kebab meat 
-    bacon: 0.6
+    tomato: 0.6,
+    onion: 0.3
 }
 
 class TortillaBuilder extends Component {
@@ -22,9 +23,10 @@ class TortillaBuilder extends Component {
     state = {
         ingredients: {
             salad: 0,
-            bacon: 0,
-            cheese: 0,
-            meat: 0
+            tomato: 0,
+            meat: 0,
+            onion: 0,
+            dressing: 0
         },
         totalCost: 2.30,
         orderable: false,

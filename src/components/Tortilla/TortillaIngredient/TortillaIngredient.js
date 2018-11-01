@@ -22,14 +22,17 @@ class TortillaIngredient extends Component {
             case ( 'meat' ):
                 ingredient = <div className={classes.Meat}></div>;
                 break;
-            case ( 'cheese' ):
-                ingredient = <div className={classes.Cheese}></div>;
+            case ( 'dressing' ):
+                ingredient = <div className={classes.Dressing}></div>;
                 break;
-            case ( 'bacon' ):
-                ingredient = <div className={classes.Bacon}></div>;
+            case ( 'tomato' ):
+                ingredient = <div className={classes.Tomato}></div>;
                 break;
             case ( 'salad' ):
                 ingredient = <div className={classes.Salad}></div>;
+                break;
+            case ( 'onion' ):
+                ingredient = <div className={classes.Onion}></div>;
                 break;
             default:
                 ingredient = null;

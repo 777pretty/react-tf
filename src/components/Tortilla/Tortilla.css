@@ -1,7 +1,7 @@
 .Tortilla {
     width: 100%;
     margin: auto;
-    height: 400px;
+    height: 300px;
     overflow: scroll;
     text-align: center;
     font-weight: bold;
@@ -10,3 +10,8 @@
     overflow-y: auto;
 }
 
+@media (max-width: 499px){
+    .Tortilla {
+        height: 250px;
+    }
+}
