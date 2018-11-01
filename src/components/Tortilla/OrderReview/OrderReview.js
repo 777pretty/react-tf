@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import Aukz from '../../../hoc/Aukz'
+import Aukz from '../../../hoc/Aukz/Aukz'
 import Button from '../../UI/Button/Button'
 
 class OrderReview extends Component {
