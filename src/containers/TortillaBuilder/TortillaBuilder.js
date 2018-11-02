@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 
 import Aukz from '../../hoc/Aukz/Aukz';
 import Tortilla from '../../components/Tortilla/Tortilla';
-import BuildControls from '../../components/Tortilla/BuildControls/BuildControls'
-import Modal from '../../components/UI/Modal/Modal'
-import OrderReview from '../../components/Tortilla/OrderReview/OrderReview'
-import Spinner from '../../components/UI/Spinner/Spinner'
-import axios from '../../axios-orders'
+import BuildControls from '../../components/Tortilla/BuildControls/BuildControls';
+import Modal from '../../components/UI/Modal/Modal';
+import OrderReview from '../../components/Tortilla/OrderReview/OrderReview';
+import Spinner from '../../components/UI/Spinner/Spinner';
+import axios from '../../axios-orders';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 
 
@@ -166,4 +167,4 @@ class TortillaBuilder extends Component {
 }
 
 
-export default TortillaBuilder;
+export default withErrorHandler(TortillaBuilder, axios);
