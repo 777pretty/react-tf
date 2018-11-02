@@ -5,6 +5,8 @@ import Tortilla from '../../components/Tortilla/Tortilla';
 import BuildControls from '../../components/Tortilla/BuildControls/BuildControls'
 import Modal from '../../components/UI/Modal/Modal'
 import OrderReview from '../../components/Tortilla/OrderReview/OrderReview'
+import axios from '../../axios-orders'
+
 
 
 const ING_COST = {
@@ -95,7 +97,25 @@ class TortillaBuilder extends Component {
     }
 
     reviewContinueHandler = () => {
-        alert('You have selected continue.')
+        // alert('You have selected continue.')
+        const order = {
+            ingredients: this.state.ingredients,
+            cost: this.state.totalCost,
+            customer: {
+                name: 'Roland Royce',
+                address: {
+                    street: 'Test street',
+                    zipcode: 123456,
+                    country: 'Roman Empire'
+                },
+                email: 'royce@gmail.com'
+            },
+            deliveryMethod: 'Express One'
+        };
+        axios.post('/orders.json', order)
+            .then(response => console.log(response))
+            .catch(error => console.log(error));
+
     }
 
     render() {
