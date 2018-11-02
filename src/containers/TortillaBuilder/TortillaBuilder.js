@@ -5,6 +5,7 @@ import Tortilla from '../../components/Tortilla/Tortilla';
 import BuildControls from '../../components/Tortilla/BuildControls/BuildControls'
 import Modal from '../../components/UI/Modal/Modal'
 import OrderReview from '../../components/Tortilla/OrderReview/OrderReview'
+import Spinner from '../../components/UI/Spinner/Spinner'
 import axios from '../../axios-orders'
 
 
@@ -32,7 +33,8 @@ class TortillaBuilder extends Component {
         },
         totalCost: 2.30,
         orderable: false,
-        reviewing: false
+        reviewing: false,
+        loading: false
     }
 
     updateOrderableState(ingredients){
@@ -125,13 +127,17 @@ class TortillaBuilder extends Component {
         for (let key in disabledInf){
             disabledInf[key] = disabledInf[key] <= 0
         }
+        let orderReview = <OrderReview ingredients={this.state.ingredients}
+        reviewCanceled={this.reviewOutHandler}
+        reviewContinue={this.reviewContinueHandler} 
+        totalCost={this.state.totalCost.toFixed(2)}/>  
+        if (this.state.loading){
+            orderReview = <Spinner />;
+        }
         return (
             <Aukz>
-                <Modal disp={this.state.reviewing} modalOut={this.reviewOutHandler}>
-                    <OrderReview ingredients={this.state.ingredients}
-                                 reviewCanceled={this.reviewOutHandler}
-                                 reviewContinue={this.reviewContinueHandler} 
-                                 totalCost={this.state.totalCost.toFixed(2)}/>    
+                <Modal disp={this.state.reviewing} modalOut={this.reviewOutHandler}>  
+                {orderReview}
                 </Modal>
                 <Tortilla ingredients={this.state.ingredients} />
                 <BuildControls 
