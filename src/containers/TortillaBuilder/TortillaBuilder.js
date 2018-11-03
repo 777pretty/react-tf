@@ -25,17 +25,20 @@ class TortillaBuilder extends Component {
     //     this.state = {...}
     // }
     state = {
-        ingredients: {
-            salad: 0,
-            tomato: 0,
-            meat: 0,
-            onion: 0,
-            dressing: 0
-        },
+        ingredients: null,
         totalCost: 2.30,
         orderable: false,
         reviewing: false,
         loading: false
+    }
+
+    componentDidMount(){
+        axios.get("https://react-tf.firebaseio.com/ingredients.json")
+            .then(response => {
+                this.setState({
+                    ingredients: response.data
+                });
+            });
     }
 
     updateOrderableState(ingredients){
@@ -141,26 +144,35 @@ class TortillaBuilder extends Component {
         for (let key in disabledInf){
             disabledInf[key] = disabledInf[key] <= 0
         }
-        let orderReview = <OrderReview ingredients={this.state.ingredients}
-        reviewCanceled={this.reviewOutHandler}
-        reviewContinue={this.reviewContinueHandler} 
-        totalCost={this.state.totalCost.toFixed(2)}/>  
+        let orderReview = <Spinner />;
+        let tortilla = <Spinner />;
+        
+        if (this.state.ingredients) {
+            tortilla = <Aukz>
+                            <Tortilla ingredients={this.state.ingredients} />
+                            <BuildControls 
+                                ingAdded={this.addIngHandler}
+                                ingRemoved={this.removeIngHandler}
+                                disabled={disabledInf}
+                                cost={this.state.totalCost}
+                                ordered={this.reviewHandler}
+                                orderable={this.state.orderable}/>
+                        </Aukz>;
+            orderReview = <OrderReview  ingredients={this.state.ingredients}
+                                        reviewCanceled={this.reviewOutHandler}
+                                        reviewContinue={this.reviewContinueHandler} 
+                                        totalCost={this.state.totalCost.toFixed(2)}/>;   
+        }
         if (this.state.loading){
             orderReview = <Spinner />;
         }
+                        
         return (
             <Aukz>
                 <Modal disp={this.state.reviewing} modalOut={this.reviewOutHandler}>  
                 {orderReview}
                 </Modal>
-                <Tortilla ingredients={this.state.ingredients} />
-                <BuildControls 
-                    ingAdded={this.addIngHandler}
-                    ingRemoved={this.removeIngHandler}
-                    disabled={disabledInf}
-                    cost={this.state.totalCost}
-                    ordered={this.reviewHandler}
-                    orderable={this.state.orderable}/>
+                {tortilla}
             </Aukz>
         );
     }
