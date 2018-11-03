@@ -148,7 +148,7 @@ class TortillaBuilder extends Component {
             disabledInf[key] = disabledInf[key] <= 0
         }
         let orderReview = <Spinner />;
-        let tortilla = this.state.error ? <p>Ingredients were unable to load.</p> : <Spinner />;
+        let tortilla = this.state.error ? <p>Ingredients were unable to load.</p> : <span style={{margin: 1}}><Spinner /></span>;
         
         if (this.state.ingredients) {
             tortilla = <Aukz>
