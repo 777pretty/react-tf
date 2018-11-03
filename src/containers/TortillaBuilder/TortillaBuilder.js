@@ -7,7 +7,7 @@ import Modal from '../../components/UI/Modal/Modal';
 import OrderReview from '../../components/Tortilla/OrderReview/OrderReview';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import axios from '../../axios-orders';
-import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler'
 
 
 
