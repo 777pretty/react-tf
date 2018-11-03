@@ -29,15 +29,18 @@ class TortillaBuilder extends Component {
         totalCost: 2.30,
         orderable: false,
         reviewing: false,
-        loading: false
+        loading: false,
+        error: false
     }
 
     componentDidMount(){
         axios.get("https://react-tf.firebaseio.com/ingredients.json")
             .then(response => {
-                this.setState({
-                    ingredients: response.data
-                });
+                this.setState({ingredients: response.data});
+                
+            })
+            .catch(error => {
+                this.setState({error: true});
             });
     }
 
@@ -145,7 +148,7 @@ class TortillaBuilder extends Component {
             disabledInf[key] = disabledInf[key] <= 0
         }
         let orderReview = <Spinner />;
-        let tortilla = <Spinner />;
+        let tortilla = this.state.error ? <p>Ingredients were unable to load.</p> : <Spinner />;
         
         if (this.state.ingredients) {
             tortilla = <Aukz>
