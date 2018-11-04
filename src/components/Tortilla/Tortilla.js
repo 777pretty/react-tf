@@ -4,7 +4,7 @@ import classes from './Tortilla.css';
 import TortillaIngredient from './TortillaIngredient/TortillaIngredient';
 //commitTest3
 const tortilla = ( props ) => {
-    let transformedIngredients = Object.keys( props.ingredients)
+    let transformedIngredients = Object.keys( props.ingredients )
            .map(ingKey => {
                return [...Array(props.ingredients[ingKey])].map((_,i) => {
                    return <TortillaIngredient key={ingKey + i} type={ingKey} />
