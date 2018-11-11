@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom';
 
 import Layout from './hoc/Layout/Layout';
 import TortillaBuilder from './containers/TortillaBuilder/TortillaBuilder';
@@ -10,8 +10,10 @@ class App extends Component {
     return (
       <div>
         <Layout>
-          <Route path="/checkout" Component={Checkout} />
-          <Route path="/" exact Component={TortillaBuilder} />
+          <Switch>
+            <Route path="/checkout" component={Checkout} />
+            <Route path="/" exact component={TortillaBuilder} />
+          </Switch>
         </Layout>
       </div>
     );
