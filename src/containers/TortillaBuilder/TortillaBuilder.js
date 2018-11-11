@@ -137,6 +137,7 @@ class TortillaBuilder extends Component {
                     reviewing: false
                 })
             });
+        this.props.history.push('/checkout')
 
     }
 

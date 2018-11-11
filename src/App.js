@@ -12,7 +12,7 @@ class App extends Component {
         <Layout>
           <Switch>
             <Route path="/checkout" component={Checkout} />
-            <Route path="/" exact component={TortillaBuilder} />
+            <Route path="/"  component={TortillaBuilder} />
           </Switch>
         </Layout>
       </div>

@@ -1,9 +1,11 @@
 import React from 'react';
-//commitTest3
+import { withRouter } from 'react-router-dom'
+
 import classes from './Tortilla.css';
 import TortillaIngredient from './TortillaIngredient/TortillaIngredient';
 //commitTest3
 const tortilla = ( props ) => {
+    console.log(props)
     let transformedIngredients = Object.keys( props.ingredients )
            .map(ingKey => {
                return [...Array(props.ingredients[ingKey])].map((_,i) => {
@@ -25,4 +27,4 @@ const tortilla = ( props ) => {
     );
 };
 
-export default tortilla;
+export default withRouter(tortilla);
