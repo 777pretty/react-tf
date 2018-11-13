@@ -39,7 +39,7 @@ const withErrorHandler = (WrappedComponent, axios) => {
         return (
             <Aukz>
                 <Modal disp={this.state.error} modalOut={this.errorConfirmedHandler}>
-                    {this.state.errpr ? this.state.error.message : null}
+                    {this.state.error ? this.state.error.message : null}
                 </Modal>
                 <WrappedComponent {...this.props} />
             </Aukz>
