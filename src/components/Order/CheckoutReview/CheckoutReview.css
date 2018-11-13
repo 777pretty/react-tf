@@ -4,6 +4,7 @@
     margin: auto;
 }
 
+
 @media (min-width: 600px) {
     .CheckoutReview {
         width: 500px;
