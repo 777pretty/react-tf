@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
 import Button from '../../../components/UI/Button/Button';
-import classes from './ContactData.css'
-import axios from '../../../axios-orders'
+import classes from './ContactData.css';
+import axios from '../../../axios-orders';
+import Spinner from '../../../components/UI/Spinner/Spinner';
 
 
 
@@ -31,7 +32,7 @@ class ContactData extends Component {
                 address: {
                     street: 'Test street',
                     zipcode: 123456,
-                    country: 'Roman Empire'
+                    country: 'Chinese Empire'
                 },
                 email: 'royce@gmail.com'
             },
@@ -51,16 +52,22 @@ class ContactData extends Component {
     }
 
     render(){
+        let form = null;
+        if (this.state.loading) {
+            form = <Spinner />
+        } else {
+            form = <form >
+                        <input className={classes.Input} type="text" name="name" placeholder="Full Name:" />
+                        <input className={classes.Input} type="email" name="email" placeholder="E-mail:" />
+                        <input className={classes.Input} type="text" name="street" placeholder="Street Name:" />
+                        <input className={classes.Input} type="text" name="postalCode" placeholder="PC:" />
+                        <Button buttonType="Success" clickd={this.orderHandler} >ORDER NOW</Button>
+                   </form>
+        }
         return(
             <div className={classes.ContactData} >
                 <h4>Enter your contact information</h4>
-                <form >
-                    <input className={classes.Input} type="text" name="name" placeholder="Full Name:" />
-                    <input className={classes.Input} type="email" name="email" placeholder="E-mail:" />
-                    <input className={classes.Input} type="text" name="street" placeholder="Street Name:" />
-                    <input className={classes.Input} type="text" name="postalCode" placeholder="PC:" />
-                    <Button buttonType="Success" clickd={this.orderHandler} >ORDER NOW</Button>
-                </form>
+                {form}
             </div>
         )
     }
