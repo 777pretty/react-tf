@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 
 import Button from '../../../components/UI/Button/Button';
 import classes from './ContactData.css'
+import axios from '../../../axios-orders'
+
+
 
 class ContactData extends Component {
     state = {
@@ -10,7 +13,41 @@ class ContactData extends Component {
         address: {
             street: '',
             postalCode: ''
-        }
+        },
+        loading: false
+    }
+
+    orderHandler = (event) => {
+        event.preventDefault();
+        // // alert('You have selected continue.')
+        this.setState({
+            loading: true
+        })
+        const order = {
+            ingredients: this.state.ingredients,
+            cost: this.state.totalCost,
+            customer: {
+                name: 'Roland Royce',
+                address: {
+                    street: 'Test street',
+                    zipcode: 123456,
+                    country: 'Roman Empire'
+                },
+                email: 'royce@gmail.com'
+            },
+            deliveryMethod: 'Express One'
+        };
+        axios.post('/orders.json', order)
+            .then(response => {
+                this.setState({
+                    loading: false,
+                })
+            })
+            .catch(error => {
+                this.setState({
+                    loading: false,
+                })
+            });
     }
 
     render(){
@@ -18,11 +55,11 @@ class ContactData extends Component {
             <div className={classes.ContactData} >
                 <h4>Enter your contact information</h4>
                 <form >
+                    <input className={classes.Input} type="text" name="name" placeholder="Full Name:" />
                     <input className={classes.Input} type="email" name="email" placeholder="E-mail:" />
                     <input className={classes.Input} type="text" name="street" placeholder="Street Name:" />
                     <input className={classes.Input} type="text" name="postalCode" placeholder="PC:" />
-                    <input className={classes.Input} type="text" name="name" placeholder="Full Name:" />
-                    <Button buttonType="Success">ORDER NOW</Button>
+                    <Button buttonType="Success" clickd={this.orderHandler} >ORDER NOW</Button>
                 </form>
             </div>
         )

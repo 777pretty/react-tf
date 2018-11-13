@@ -106,43 +106,14 @@ class TortillaBuilder extends Component {
     }
 
     reviewContinueHandler = () => {
-        // // alert('You have selected continue.')
-        // this.setState({
-        //     loading: true
-        // })
-        // const order = {
-        //     ingredients: this.state.ingredients,
-        //     cost: this.state.totalCost,
-        //     customer: {
-        //         name: 'Roland Royce',
-        //         address: {
-        //             street: 'Test street',
-        //             zipcode: 123456,
-        //             country: 'Roman Empire'
-        //         },
-        //         email: 'royce@gmail.com'
-        //     },
-        //     deliveryMethod: 'Express One'
-        // };
-        // axios.post('/orders.json', order)
-        //     .then(response => {
-        //         this.setState({
-        //             loading: false,
-        //             reviewing: false,
-        //         })
-        //     })
-        //     .catch(error => {
-        //         this.setState({
-        //             loading: false,
-        //             reviewing: false
-        //         })
-        //     });
+        
 
         const queryParams = [];
 
         for (let i in this.state.ingredients){
             queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]))
         }
+        queryParams.push('cost=' + this.state.totalCost);
 
         const queryString = queryParams.join('&');
         this.props.history.push({
