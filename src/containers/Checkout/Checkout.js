@@ -25,7 +25,7 @@ class Checkout extends Component {
 
         }
         this.setState({ingredients: ingredients,
-                       totalCost: cost});
+                       cost: cost});
     }
 
     checkoutCancelledHandler = () => {
@@ -44,7 +44,7 @@ class Checkout extends Component {
                                 checkoutContinued={this.checkoutContinuedHandler}  />
                 <Route path={this.props.match.path + '/contact-data'} 
                        render={(props) => (<ContactData ingredients={this.state.ingredients} 
-                                                   cost={this.state.totalCost}
+                                                   cost={this.state.cost}
                                                    {...props}/>)} />
             </div>
 
