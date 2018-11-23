@@ -10,11 +10,58 @@ import Input from '../../../components/UI/Input/Input';
 
 class ContactData extends Component {
     state = {
-        name: '',
-        email: '',
-        address: {
-            street: '',
-            postalCode: ''
+        orderForm: {
+                name: {
+                    elementType: 'input',
+                    elementConfig: {
+                        type: 'text',
+                        placeholder: 'Your name'
+                    },
+                    value: ''
+                },
+                email: {
+                    elementType: 'input',
+                    elementConfig: {
+                        type: 'text',
+                        placeholder: 'E-mail'
+                    },
+                    value: ''
+                },
+                street: {
+                    elementType: 'input',
+                    elementConfig: {
+                        type: 'text',
+                        placeholder: 'Street'
+                    },
+                    value: ''
+                },
+                zipCode: {
+                    elementType: 'input',
+                    elementConfig: {
+                        type: 'text',
+                        placeholder: 'ZIP Code'
+                    },
+                    value: ''
+                },
+                country: {
+                    elementType: 'input',
+                    elementConfig: {
+                        type: 'text',
+                        placeholder: 'Country'
+                    },
+                    value: ''
+                },
+                deliveryMethod: {
+                    elementType: 'select',
+                    elementConfig: {
+                        options: [
+                            {value: 'fastest', displayValue: 'Express One'},
+                            {value: 'balanced', displayValue: 'Eagle Courier'},
+                            {value: 'slowest', displayValue: 'National'}
+                        ]
+                    },
+                    value: ''
+                },
         },
         loading: false
     }
@@ -59,7 +106,7 @@ class ContactData extends Component {
             form = <Spinner />
         } else {
             form = <form >
-                        <Input inputtype="input" type="text" name="name" placeholder="Full Name:" />
+                        <Input elementType="..." elementConfig="..." value="..."/>
                         <Input inputtype="input" type="email" name="email" placeholder="E-mail:" />
                         <Input inputtype="input" type="text" name="street" placeholder="Street Name:" />
                         <Input inputtype="input" type="text" name="postalCode" placeholder="PC:" />
