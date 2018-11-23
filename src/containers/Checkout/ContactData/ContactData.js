@@ -74,18 +74,10 @@ class ContactData extends Component {
         })
         const order = {
             ingredients: this.props.ingredients,
-            cost: this.props.cost,
-            customer: {
-                name: 'Roland Royce',
-                address: {
-                    street: 'Test street',
-                    zipcode: 123456,
-                    country: 'Chinese Empire'
-                },
-                email: 'royce@gmail.com'
-            },
-            deliveryMethod: 'Express One'
-        };
+            cost: this.props.cost
+
+        }
+       
         axios.post('/orders.json', order)
             .then(response => {
                 this.setState({
