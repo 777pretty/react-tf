@@ -9,10 +9,6 @@
     background-color: rgb(218, 173, 61);
 }
 
-.Input {
-    display: block;
-    
-}
 
 @media (min-width: 600px){
     .ContactData {

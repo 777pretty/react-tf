@@ -4,6 +4,7 @@ import Button from '../../../components/UI/Button/Button';
 import classes from './ContactData.css';
 import axios from '../../../axios-orders';
 import Spinner from '../../../components/UI/Spinner/Spinner';
+import Input from '../../../components/UI/Input/Input';
 
 
 
@@ -58,10 +59,10 @@ class ContactData extends Component {
             form = <Spinner />
         } else {
             form = <form >
-                        <input className={classes.Input} type="text" name="name" placeholder="Full Name:" />
-                        <input className={classes.Input} type="email" name="email" placeholder="E-mail:" />
-                        <input className={classes.Input} type="text" name="street" placeholder="Street Name:" />
-                        <input className={classes.Input} type="text" name="postalCode" placeholder="PC:" />
+                        <Input inputType="input" type="text" name="name" placeholder="Full Name:" />
+                        <Input inputType="input" type="email" name="email" placeholder="E-mail:" />
+                        <Input inputType="input" type="text" name="street" placeholder="Street Name:" />
+                        <Input inputType="input" type="text" name="postalCode" placeholder="PC:" />
                         <Button buttonType="Success" clickd={this.orderHandler} >ORDER NOW</Button>
                    </form>
         }
