@@ -59,10 +59,10 @@ class ContactData extends Component {
             form = <Spinner />
         } else {
             form = <form >
-                        <Input inputType="input" type="text" name="name" placeholder="Full Name:" />
-                        <Input inputType="input" type="email" name="email" placeholder="E-mail:" />
-                        <Input inputType="input" type="text" name="street" placeholder="Street Name:" />
-                        <Input inputType="input" type="text" name="postalCode" placeholder="PC:" />
+                        <Input inputtype="input" type="text" name="name" placeholder="Full Name:" />
+                        <Input inputtype="input" type="email" name="email" placeholder="E-mail:" />
+                        <Input inputtype="input" type="text" name="street" placeholder="Street Name:" />
+                        <Input inputtype="input" type="text" name="postalCode" placeholder="PC:" />
                         <Button buttonType="Success" clickd={this.orderHandler} >ORDER NOW</Button>
                    </form>
         }
