@@ -127,7 +127,7 @@ class TortillaBuilder extends Component {
 
     render() {
         const disabledInf = {
-            ...this.props.ingos
+            ...this.props.ings
         }
         for (let key in disabledInf){
             disabledInf[key] = disabledInf[key] <= 0
@@ -135,18 +135,18 @@ class TortillaBuilder extends Component {
         let orderReview = <Spinner />;
         let tortilla = this.state.error ? <p>Ingredients were unable to load.</p> : <span style={{margin: 1}}><Spinner /></span>;
         
-        if (this.props.ingos) {
+        if (this.props.ings) {
             tortilla = <Aukz>
-                            <Tortilla ingredients={this.props.ingos} />
+                            <Tortilla ingredients={this.props.ings} />
                             <BuildControls 
-                                ingAdded={this.props.onIngoAdded}
-                                ingRemoved={this.props.onIngoRemoved}
+                                ingredientAdded={this.props.onIngredientAdded}
+                                ingredientRemoved={this.props.onIngredientRemoved}
                                 disabled={disabledInf}
                                 cost={this.state.totalCost}
                                 ordered={this.reviewHandler}
                                 orderable={this.state.orderable}/>
                         </Aukz>;
-            orderReview = <OrderReview  ingredients={this.props.ingos}
+            orderReview = <OrderReview  ingredients={this.props.ings}
                                         reviewCanceled={this.reviewOutHandler}
                                         reviewContinue={this.reviewContinueHandler} 
                                         totalCost={this.state.totalCost.toFixed(2)}/>;   
@@ -166,16 +166,16 @@ class TortillaBuilder extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
-        ingos: state.ingredients
+        ings: state.ingredients
     };
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
     return {
-        onIngoAdded: (ingoName) => dispatch({type: actionTypes.ADD_ING, ingredientsName: ingoName}),
-        onIngoRemoved: (ingoName) => dispatch({type: actionTypes.REMOVE_ING, ingredientsName: ingoName})
+        onIngredientAdded: (ingName) => dispatch({type: actionTypes.ADD_ING, ingredientName: ingName}),
+        onIngredientRemoved: (ingName) => dispatch({type: actionTypes.REMOVE_ING, ingredientName: ingName})
     };
 }
 
