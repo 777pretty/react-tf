@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Aukz from '../../hoc/Aukz/Aukz';
 import Tortilla from '../../components/Tortilla/Tortilla';
@@ -7,7 +8,8 @@ import Modal from '../../components/UI/Modal/Modal';
 import OrderReview from '../../components/Tortilla/OrderReview/OrderReview';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import axios from '../../axios-orders';
-import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler'
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+import * as actionTypes from '../../store/actions';
 
 
 
@@ -25,7 +27,6 @@ class TortillaBuilder extends Component {
     //     this.state = {...}
     // }
     state = {
-        ingredients: null,
         totalCost: 2.30,
         orderable: false,
         reviewing: false,
@@ -126,7 +127,7 @@ class TortillaBuilder extends Component {
 
     render() {
         const disabledInf = {
-            ...this.state.ingredients
+            ...this.props.ingos
         }
         for (let key in disabledInf){
             disabledInf[key] = disabledInf[key] <= 0
@@ -134,18 +135,18 @@ class TortillaBuilder extends Component {
         let orderReview = <Spinner />;
         let tortilla = this.state.error ? <p>Ingredients were unable to load.</p> : <span style={{margin: 1}}><Spinner /></span>;
         
-        if (this.state.ingredients) {
+        if (this.props.ingos) {
             tortilla = <Aukz>
-                            <Tortilla ingredients={this.state.ingredients} />
+                            <Tortilla ingredients={this.props.ingos} />
                             <BuildControls 
-                                ingAdded={this.addIngHandler}
-                                ingRemoved={this.removeIngHandler}
+                                ingAdded={this.props.onIngoAdded}
+                                ingRemoved={this.props.onIngoRemoved}
                                 disabled={disabledInf}
                                 cost={this.state.totalCost}
                                 ordered={this.reviewHandler}
                                 orderable={this.state.orderable}/>
                         </Aukz>;
-            orderReview = <OrderReview  ingredients={this.state.ingredients}
+            orderReview = <OrderReview  ingredients={this.props.ingos}
                                         reviewCanceled={this.reviewOutHandler}
                                         reviewContinue={this.reviewContinueHandler} 
                                         totalCost={this.state.totalCost.toFixed(2)}/>;   
@@ -165,5 +166,17 @@ class TortillaBuilder extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        ingos: state.ingredients
+    };
+}
 
-export default withErrorHandler(TortillaBuilder, axios);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onIngoAdded: (ingoName) => dispatch({type: actionTypes.ADD_ING, ingredientsName: ingoName}),
+        onIngoRemoved: (ingoName) => dispatch({type: actionTypes.REMOVE_ING, ingredientsName: ingoName})
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(TortillaBuilder, axios));

@@ -2,11 +2,11 @@ import * as actionTypes from './actions'
 
 const initialState = {
     ingredients: {
-        meat: 0,
-        dressing: 0,
-        tomato: 0,
         salad: 0,
-        onion: 0
+        tomato: 0,
+        meat: 0,
+        onion: 0,
+        dressing: 0
     },
     totalCost: 2.30
 };
@@ -18,7 +18,7 @@ const reducer = (state = initialState, action) => {
                     ...state,
                     ingredients: {
                         ...state.ingredients,
-                        [action.ingName]: state.ingredients[action.ingName] + 1
+                        [action.ingredientName]: state.ingredients[action.ingredientName] + 1
                     }
             };
         case actionTypes.REMOVE_ING:
@@ -26,7 +26,7 @@ const reducer = (state = initialState, action) => {
                     ...state,
                     ingredients: {
                         ...state.ingredients,
-                        [action.ingName]: state.ingredients[action.ingName] - 1
+                        [action.ingredientName]: state.ingredients[action.ingredientName] - 1
                     }
             };
         default:
