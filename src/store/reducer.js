@@ -1,6 +1,9 @@
+import * as actionTypes from './actions'
+
 const initialState = {
-    conster: 0
-}
+    ingredients: null,
+    totalCost: 2.30
+};
 
 const reducer = (state = initialState, action) => {
     return state;
