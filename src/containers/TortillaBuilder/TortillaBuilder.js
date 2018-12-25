@@ -27,7 +27,6 @@ class TortillaBuilder extends Component {
     //     this.state = {...}
     // }
     state = {
-        totalCost: 2.30,
         orderable: false,
         reviewing: false,
         loading: false,
@@ -57,43 +56,43 @@ class TortillaBuilder extends Component {
             this.setState({orderable: total > 0})
     }
 
-    addIngHandler = (type) => {
-        const oldCount = this.state.ingredients[type]
-        const updCount = oldCount + 1
-        const updIngredients = {
-            ...this.state.ingredients
-        }
-        updIngredients[type] = updCount
-        const costAddition = ING_COST[type]
-        const oldCost = this.state.totalCost
-        const newCost = oldCost + costAddition
-        this.setState({
-            totalCost: newCost, 
-            ingredients: updIngredients
-        })
-        this.updateOrderableState(updIngredients)
-        }
+    // addIngHandler = (type) => {
+    //     const oldCount = this.state.ingredients[type]
+    //     const updCount = oldCount + 1
+    //     const updIngredients = {
+    //         ...this.state.ingredients
+    //     }
+    //     updIngredients[type] = updCount
+    //     const costAddition = ING_COST[type]
+    //     const oldCost = this.state.totalCost
+    //     const newCost = oldCost + costAddition
+    //     this.setState({
+    //         totalCost: newCost, 
+    //         ingredients: updIngredients
+    //     })
+    //     this.updateOrderableState(updIngredients)
+    //     }
     
 
-    removeIngHandler = (type) => {
-        const oldCount = this.state.ingredients[type]
-        if (oldCount <= 0){
-            return
-        }
-        const updCount = oldCount - 1
-        const updIngredients = {
-            ...this.state.ingredients
-        }
-        updIngredients[type] = updCount
-        const costDeduction = ING_COST[type]
-        const oldCost = this.state.totalCost
-        const newCost = oldCost - costDeduction
-        this.setState({
-            totalCost: newCost, 
-            ingredients: updIngredients
-        })
-        this.updateOrderableState(updIngredients)
-    }
+    // removeIngHandler = (type) => {
+    //     const oldCount = this.state.ingredients[type]
+    //     if (oldCount <= 0){
+    //         return
+    //     }
+    //     const updCount = oldCount - 1
+    //     const updIngredients = {
+    //         ...this.state.ingredients
+    //     }
+    //     updIngredients[type] = updCount
+    //     const costDeduction = ING_COST[type]
+    //     const oldCost = this.state.totalCost
+    //     const newCost = oldCost - costDeduction
+    //     this.setState({
+    //         totalCost: newCost, 
+    //         ingredients: updIngredients
+    //     })
+    //     this.updateOrderableState(updIngredients)
+    // }
 
     reviewHandler = () => {
         this.setState({
@@ -142,14 +141,14 @@ class TortillaBuilder extends Component {
                                 ingredientAdded={this.props.onIngredientAdded}
                                 ingredientRemoved={this.props.onIngredientRemoved}
                                 disabled={disabledInf}
-                                cost={this.state.totalCost}
+                                cost={this.props.cost}
                                 ordered={this.reviewHandler}
                                 orderable={this.state.orderable}/>
                         </Aukz>;
             orderReview = <OrderReview  ingredients={this.props.ings}
                                         reviewCanceled={this.reviewOutHandler}
                                         reviewContinue={this.reviewContinueHandler} 
-                                        totalCost={this.state.totalCost.toFixed(2)}/>;   
+                                        totalCost={this.props.totalCost}/>;   
         }
         if (this.state.loading){
             orderReview = <Spinner />;
@@ -168,7 +167,8 @@ class TortillaBuilder extends Component {
 
 const mapStateToProps = state => {
     return {
-        ings: state.ingredients
+        ings: state.ingredients,
+        cost: state.totalCost
     };
 }
 
@@ -178,5 +178,6 @@ const mapDispatchToProps = dispatch => {
         onIngredientRemoved: (ingName) => dispatch({type: actionTypes.REMOVE_ING, ingredientName: ingName})
     };
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(TortillaBuilder, axios));
