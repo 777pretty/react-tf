@@ -27,7 +27,6 @@ class TortillaBuilder extends Component {
     //     this.state = {...}
     // }
     state = {
-        orderable: false,
         reviewing: false,
         loading: false,
         error: false
@@ -53,7 +52,7 @@ class TortillaBuilder extends Component {
             .reduce((total, el) => {
                 return total + el
             }, 0)
-            this.setState({orderable: total > 0})
+        return total > 0;
     }
 
     // addIngHandler = (type) => {
@@ -143,7 +142,7 @@ class TortillaBuilder extends Component {
                                 disabled={disabledInf}
                                 cost={this.props.cost}
                                 ordered={this.reviewHandler}
-                                orderable={this.state.orderable}/>
+                                orderable={this.updateOrderableState(this.props.ings)}/>
                         </Aukz>;
             orderReview = <OrderReview  ingredients={this.props.ings}
                                         reviewCanceled={this.reviewOutHandler}
