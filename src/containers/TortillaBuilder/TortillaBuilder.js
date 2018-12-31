@@ -9,7 +9,7 @@ import OrderReview from '../../components/Tortilla/OrderReview/OrderReview';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import axios from '../../axios-orders';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-import * as actionTypes from '../../store/actions';
+import * as tortillaBuilderActions from '../../store/actions/index';
 
 
 
@@ -159,8 +159,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIngredientAdded: (ingName) => dispatch({type: actionTypes.ADD_ING, ingredientName: ingName}),
-        onIngredientRemoved: (ingName) => dispatch({type: actionTypes.REMOVE_ING, ingredientName: ingName})
+        onIngredientAdded: (ingName) => dispatch(tortillaBuilderActions.addIng(ingName)),
+        onIngredientRemoved: (ingName) => dispatch(tortillaBuilderActions.removeIng(ingName))
     };
 }
 
