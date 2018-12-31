@@ -13,13 +13,13 @@ import axios from '../../axios-orders';
 
 
 
-const ING_COST = {
-    salad: 0.5,
-    dressing: 0.5,
-    meat: 0.9,    //high quality kebab meat 
-    tomato: 0.6,
-    onion: 0.3
-}
+// const ING_COST = {
+//     salad: 0.5,
+//     dressing: 0.5,
+//     meat: 0.9,    //high quality kebab meat 
+//     tomato: 0.6,
+//     onion: 0.3
+// }
 
 class TortillaBuilder extends Component {
     // constructor(props) {
@@ -124,7 +124,7 @@ class TortillaBuilder extends Component {
             orderReview = <OrderReview  ingredients={this.props.ings}
                                         reviewCanceled={this.reviewOutHandler}
                                         reviewContinue={this.reviewContinueHandler} 
-                                        totalCost={this.props.totalCost}/>;   
+                                        totalCost={this.props.cost.toFixed(2)}/>;   
         }
                         
         return (
