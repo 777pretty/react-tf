@@ -7,9 +7,9 @@ import BuildControls from '../../components/Tortilla/BuildControls/BuildControls
 import Modal from '../../components/UI/Modal/Modal';
 import OrderReview from '../../components/Tortilla/OrderReview/OrderReview';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import axios from '../../axios-orders';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as tortillaBuilderActions from '../../store/actions/index';
+import axios from '../../axios-orders';
 
 
 
@@ -27,21 +27,12 @@ class TortillaBuilder extends Component {
     //     this.state = {...}
     // }
     state = {
-        reviewing: false,
-        loading: false,
-        error: false
+        reviewing: false
     }
 
     componentDidMount(){
         console.log(this.props)
-        // axios.get("https://react-tf.firebaseio.com/ingredients.json")
-        //     .then(response => {
-        //         this.setState({ingredients: response.data});
-                
-        //     })
-        //     .catch(error => {
-        //         this.setState({error: true});
-        //     });
+
     }
 
     updateOrderableState(ingredients){
@@ -116,7 +107,7 @@ class TortillaBuilder extends Component {
         for (let key in disabledInf){
             disabledInf[key] = disabledInf[key] <= 0
         }
-        let orderReview = <Spinner />;
+        let orderReview = null;
         let tortilla = this.state.error ? <p>Ingredients were unable to load.</p> : <span style={{margin: 1}}><Spinner /></span>;
         
         if (this.props.ings) {
@@ -134,9 +125,6 @@ class TortillaBuilder extends Component {
                                         reviewCanceled={this.reviewOutHandler}
                                         reviewContinue={this.reviewContinueHandler} 
                                         totalCost={this.props.totalCost}/>;   
-        }
-        if (this.state.loading){
-            orderReview = <Spinner />;
         }
                         
         return (
