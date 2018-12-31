@@ -37,7 +37,13 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SET_ING:
             return {
                     ...state,
-                    ingredients: action.ingredients,
+                    ingredients: {
+                        salad: action.ingredients.salad,
+                        dressing: action.ingredients.dressing,
+                        tomato: action.ingredients.tomato,
+                        onion: action.ingredients.onion,
+                        meat: action.ingredients.meat
+                    },
                     error: false
             };
         case actionTypes.FETCH_ING_FAILED:
