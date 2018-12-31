@@ -31,9 +31,9 @@ class TortillaBuilder extends Component {
     }
 
     componentDidMount(){
-        console.log(this.props)
-
-    }
+        console.log(this.props);
+        this.props.onIngredientInit();
+    };
 
     updateOrderableState(ingredients){
         const total = Object.keys(ingredients)
@@ -108,7 +108,7 @@ class TortillaBuilder extends Component {
             disabledInf[key] = disabledInf[key] <= 0
         }
         let orderReview = null;
-        let tortilla = this.state.error ? <p>Ingredients were unable to load.</p> : <span style={{margin: 1}}><Spinner /></span>;
+        let tortilla = this.props.error ? <p>Ingredients were unable to load.</p> : <span style={{margin: 1}}><Spinner /></span>;
         
         if (this.props.ings) {
             tortilla = <Aukz>
@@ -141,14 +141,16 @@ class TortillaBuilder extends Component {
 const mapStateToProps = state => {
     return {
         ings: state.ingredients,
-        cost: state.totalCost
+        cost: state.totalCost,
+        error: state.error
     };
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         onIngredientAdded: (ingName) => dispatch(tortillaBuilderActions.addIng(ingName)),
-        onIngredientRemoved: (ingName) => dispatch(tortillaBuilderActions.removeIng(ingName))
+        onIngredientRemoved: (ingName) => dispatch(tortillaBuilderActions.removeIng(ingName)),
+        onIngredientInit: () => dispatch(tortillaBuilderActions.initIng())
     };
 }
 

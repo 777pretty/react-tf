@@ -1,2 +1,2 @@
-export { addIng, removeIng } from './tortillaBuilder';
+export { addIng, removeIng, initIng } from './tortillaBuilder';
 export {} from './order';

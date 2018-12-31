@@ -34,6 +34,17 @@ const reducer = (state = initialState, action) => {
                     },
                     totalCost: state.totalCost - ING_COST[action.ingredientName]
             };
+        case actionTypes.SET_ING:
+            return {
+                    ...state,
+                    ingredients: action.ingredients,
+                    error: false
+            };
+        case actionTypes.FETCH_ING_FAILED:
+            return {
+                    ...state,
+                    error: true
+            }
         default:
             return state;
     }
