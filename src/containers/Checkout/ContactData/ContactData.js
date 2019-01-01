@@ -92,7 +92,7 @@ class ContactData extends Component {
                             {value: 'slowest', displayValue: 'National'}
                         ]
                     },
-                    value: '',
+                    value: 'balanced',
                     validation: {},
                     valid: true
                 },
