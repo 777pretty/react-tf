@@ -1,4 +1,5 @@
-import * as actionTypes from '../actions/actionTypes'
+import * as actionTypes from '../actions/actionTypes';
+import { updObj } from '../utility';
 
 const initialState = {
     ingredients: null,
@@ -17,41 +18,35 @@ const ING_COST = {
 const reducer = (state = initialState, action) => {
     switch (action.type){
         case actionTypes.ADD_ING:
-            return {
-                    ...state,
-                    ingredients: {
-                        ...state.ingredients,
-                        [action.ingredientName]: state.ingredients[action.ingredientName] + 1
-                    },
+            const updIngredient = { [action.ingredientName]: state.ingredients[action.ingredientName] + 1 }
+            const updIngredients = updObj(state.ingredients, updIngredient);
+            const updState = {
+                    ingredients: updIngredients,
                     totalCost: state.totalCost + ING_COST[action.ingredientName]
-            };
-        case actionTypes.REMOVE_ING:
-            return {
-                    ...state,
-                    ingredients: {
-                        ...state.ingredients,
-                        [action.ingredientName]: state.ingredients[action.ingredientName] - 1
-                    },
-                    totalCost: state.totalCost - ING_COST[action.ingredientName]
-            };
-        case actionTypes.SET_ING:
-            return {
-                    ...state,
-                    ingredients: {
-                        salad: action.ingredients.salad,
-                        dressing: action.ingredients.dressing,
-                        tomato: action.ingredients.tomato,
-                        onion: action.ingredients.onion,
-                        meat: action.ingredients.meat
-                    },
-                    totalCost: 2.30,
-                    error: false
-            };
-        case actionTypes.FETCH_ING_FAILED:
-            return {
-                    ...state,
-                    error: true
             }
+        return updObj(state, updState);
+        case actionTypes.REMOVE_ING:
+            const updIngredientR = { [action.ingredientName]: state.ingredients[action.ingredientName] - 1 }
+            const updIngredientsR = updObj(state.ingredients, updIngredient);
+            const updStateR = {
+                    ingredients: updIngredients,
+                    totalCost: state.totalCost - ING_COST[action.ingredientName]
+            }
+        return updObj(state, updStateR);
+        case actionTypes.SET_ING:
+        return updObj(state, {
+            ingredients: {
+                salad: action.ingredients.salad,
+                dressing: action.ingredients.dressing,
+                tomato: action.ingredients.tomato,
+                onion: action.ingredients.onion,
+                meat: action.ingredients.meat
+            },
+            totalCost: 2.30,
+            error: false
+        });
+        case actionTypes.FETCH_ING_FAILED:
+            return updObj(state, {error: true});
         default:
             return state;
     }
