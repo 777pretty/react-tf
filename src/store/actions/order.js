@@ -35,3 +35,9 @@ export const purchaseTortilla = (orderData) => {
         });
     };
 };
+
+export const purchaseInit = () => {
+    return {
+        type: actionTypes.PURCHASE_INIT 
+    }
+};

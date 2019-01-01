@@ -4,11 +4,14 @@ import { connect } from 'react-redux';
 
 import CheckoutReview from '../../components/Order/CheckoutReview/CheckoutReview';
 import ContactData from './ContactData/ContactData';
+import * as actions from '../../store/actions/index';
 
 
 class Checkout extends Component {
 
-
+    componentWillMount () {
+        this.props.onPurchaseInit();
+    }
 
     checkoutCancelledHandler = () => {
         this.props.history.goBack();
@@ -19,10 +22,12 @@ class Checkout extends Component {
     }
 
     render(){
-        let smmry = <Redirect to="/" />
+        let review = <Redirect to="/" />
         if (this.props.ings) {
-            smmry = (
+            const redirectPurchased = this.props.purch ? <Redirect to="/" /> : null
+            review = (
                 <div>
+                    {redirectPurchased}
                     <CheckoutReview ingredients={this.props.ings}
                                     checkoutCancelled={this.checkoutCancelledHandler}
                                     checkoutContinued={this.checkoutContinuedHandler}  />
@@ -30,15 +35,22 @@ class Checkout extends Component {
                                     component={ContactData} />
                 </div>
             );
-        } 
-        return smmry
-    }
-}
+        };
+        return review
+    };
+};
 
 const mapStateToProps = state => {
     return {
-        ings: state.tortillaBuilder.ingredients
-    }
-}
+        ings: state.tortillaBuilder.ingredients,
+        purch: state.order.purchased
+    };
+};
 
-export default connect(mapStateToProps)(Checkout);
+const mapDispatchToProps = dispatch => {
+    return {
+        onPurchaseInit: () => dispatch(actions.purchaseInit())
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout);

@@ -1,4 +1,5 @@
 export { addIng, 
          removeIng,
          initIng } from './tortillaBuilder';
-export { purchaseTortilla } from './order';
+export { purchaseTortilla,
+         purchaseInit } from './order';
