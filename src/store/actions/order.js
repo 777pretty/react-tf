@@ -16,8 +16,15 @@ export const purchaseTortillaFail = (error) => {
     };
 };
 
-export const purchaseTortillaBegin = (orderData) => {
+export const purchaseTortillaBegin = () => {
+    return {
+        type: actionTypes.PURCHASE_TORTILLA_BEGIN
+    }
+}
+
+export const purchaseTortilla = (orderData) => {
     return dispatch => {
+        dispatch(purchaseTortillaBegin())
         axios.post('/orders.json', orderData)
         .then(response => {
             console.log(response.data)
