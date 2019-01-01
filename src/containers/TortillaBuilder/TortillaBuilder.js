@@ -140,9 +140,9 @@ class TortillaBuilder extends Component {
 
 const mapStateToProps = state => {
     return {
-        ings: state.ingredients,
-        cost: state.totalCost,
-        error: state.error
+        ings: state.tortillaBuilder.ingredients,
+        cost: state.tortillaBuilder.totalCost,
+        error: state.tortillaBuilder.error
     };
 }
 
