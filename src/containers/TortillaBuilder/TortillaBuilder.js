@@ -8,7 +8,7 @@ import Modal from '../../components/UI/Modal/Modal';
 import OrderReview from '../../components/Tortilla/OrderReview/OrderReview';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-import * as tortillaBuilderActions from '../../store/actions/index';
+import * as actions from '../../store/actions/index';
 import axios from '../../axios-orders';
 
 
@@ -97,6 +97,7 @@ class TortillaBuilder extends Component {
     }
 
     reviewContinueHandler = () => {
+            this.props.onPurchaseInit();
             this.props.history.push('/checkout');
     }
 
@@ -148,9 +149,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIngredientAdded: (ingName) => dispatch(tortillaBuilderActions.addIng(ingName)),
-        onIngredientRemoved: (ingName) => dispatch(tortillaBuilderActions.removeIng(ingName)),
-        onIngredientInit: () => dispatch(tortillaBuilderActions.initIng())
+        onIngredientAdded: (ingName) => dispatch(actions.addIng(ingName)),
+        onIngredientRemoved: (ingName) => dispatch(actions.removeIng(ingName)),
+        onIngredientInit: () => dispatch(actions.initIng()),
+        onPurchaseInit: () => dispatch(actions.purchaseInit())
     };
 }
 
