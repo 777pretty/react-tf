@@ -16,7 +16,7 @@ export const purchaseTortillaFail = (error) => {
     };
 };
 
-export const purchaseTortillaBegin = () => {
+export const purchaseTortillaBegin = ( orderData ) => {
     return {
         type: actionTypes.PURCHASE_TORTILLA_BEGIN
     }
