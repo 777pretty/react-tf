@@ -19,7 +19,7 @@ class Checkout extends Component {
     }
 
     render(){
-        const smmry = <Redirect to="/" />
+        let smmry = <Redirect to="/" />
         if (this.props.ings) {
             smmry = (
                 <div>
