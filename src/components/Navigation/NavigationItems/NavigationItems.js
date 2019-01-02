@@ -7,8 +7,8 @@ const navigationItems = (props) => (
     <ul className={classes.NavigationItems}>
         <NavigationItem link="/" exact>Build a Tortilla</NavigationItem>
         <NavigationItem link="/orders">Orders</NavigationItem>
-        
+        <NavigationItem link="/auth">Log In</NavigationItem>
     </ul>
 )
 
-export default navigationItems
+export default navigationItems;

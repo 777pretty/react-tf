@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import classes from './Auth.css';
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
 
@@ -40,10 +41,10 @@ class Auth extends Component {
 
     render () {
         const formELementsArray = [];
-        for (let key in this.state.orderForm){
+        for (let key in this.state.controls){
             formELementsArray.push({
                 id: key,
-                config: this.state.orderForm[key]
+                config: this.state.controls[key]
             })
         }
 
@@ -58,11 +59,14 @@ class Auth extends Component {
         ));
 
         return (
-            <div>
+            <div className={classes.Auth}>
                 <form>
-
+                    {form}
+                    <Button buttonType="Success">Submit</Button>
                 </form>
             </div>
         )
     }
 }
+
+export default Auth
