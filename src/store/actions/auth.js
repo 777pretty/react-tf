@@ -22,7 +22,7 @@ export const authFailed = (error) => {
     };
 };
 
-export const auth = (email, password) => {
+export const auth = (email, password, alreadySigned) => {
     return dispatch => {
         dispatch(authBegin());
         const authData = {
@@ -30,7 +30,11 @@ export const auth = (email, password) => {
             password: password,
             returnSecureToken: true
         };
-        axios.post('https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyDIC6Seza-GvgVCjFyviLeY2UcmNF7y9Q4', authData)
+        let url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyDIC6Seza-GvgVCjFyviLeY2UcmNF7y9Q4';
+        if (!alreadySigned) {
+            url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyDIC6Seza-GvgVCjFyviLeY2UcmNF7y9Q4';
+        }
+        axios.post(url, authData)
              .then(response => {
                  console.log(response);
                  dispatch(authSuccess(response.data))

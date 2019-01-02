@@ -40,7 +40,8 @@ class Auth extends Component {
                 valid: false,
                 touched: false
             }
-        }
+        },
+        alreadySigned: false
     }
 
     checkValidity(value, rules){
@@ -89,7 +90,13 @@ class Auth extends Component {
 
     loginHandler = (event) => {
         event.preventDefault();
-        this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value)
+        this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.alreadySigned)
+    }
+
+    switchAuthModeHandler = () => {
+        this.setState(prevState => {
+            return {alreadySigned: !prevState.alreadySigned};
+        });
     }
 
     render () {
@@ -117,6 +124,9 @@ class Auth extends Component {
                     {form}
                     <Button buttonType="Success">Submit</Button>
                 </form>
+                <Button 
+                    clickd={this.switchAuthModeHandler}
+                    buttonType="Danger">{this.state.alreadySigned ? 'SIGN IN' : 'SIGN UP'} INSTEAD</Button>
             </div>
         )
     };
@@ -124,7 +134,7 @@ class Auth extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAuth: (email, password) => dispatch(actions.auth(email, password)),
+        onAuth: (email, password, alreadySigned) => dispatch(actions.auth(email, password, alreadySigned)),
         onAuthBegin: () => dispatch(),
         onAuthSuccess: () => dispatch(),
         onAuthFailed: () => dispatch()
