@@ -4,6 +4,8 @@ export { addIng,
 export { purchaseTortilla,
          purchaseInit,
          fetchOrders } from './order';
-export { authBegin,
-         authSuccess,
-         authFailed} from './auth';
+export { auth
+        //  authBegin,
+        //  authSuccess,
+        //  authFailed
+        } from './auth';
