@@ -15,38 +15,50 @@ const ING_COST = {
     onion: 0.3
 }
 
-const reducer = (state = initialState, action) => {
-    switch (action.type){
-        case actionTypes.ADD_ING:
-            const updIngredient = { [action.ingredientName]: state.ingredients[action.ingredientName] + 1 }
+const addIng = (state, action) => {
+    const updIngredient = { [action.ingredientName]: state.ingredients[action.ingredientName] + 1 }
             const updIngredients = updObj(state.ingredients, updIngredient);
             const updState = {
                     ingredients: updIngredients,
                     totalCost: state.totalCost + ING_COST[action.ingredientName]
             }
         return updObj(state, updState);
-        case actionTypes.REMOVE_ING:
-            const updIngredientR = { [action.ingredientName]: state.ingredients[action.ingredientName] - 1 }
-            const updIngredientsR = updObj(state.ingredients, updIngredient);
+};
+
+const removeIng = (state, action) => {
+    const updIngredientR = { [action.ingredientName]: state.ingredients[action.ingredientName] - 1 }
+            const updIngredientsR = updObj(state.ingredients, updIngredientR);
             const updStateR = {
-                    ingredients: updIngredients,
+                    ingredients: updIngredientsR,
                     totalCost: state.totalCost - ING_COST[action.ingredientName]
             }
         return updObj(state, updStateR);
-        case actionTypes.SET_ING:
-        return updObj(state, {
-            ingredients: {
-                salad: action.ingredients.salad,
-                dressing: action.ingredients.dressing,
-                tomato: action.ingredients.tomato,
-                onion: action.ingredients.onion,
-                meat: action.ingredients.meat
-            },
-            totalCost: 2.30,
-            error: false
-        });
-        case actionTypes.FETCH_ING_FAILED:
-            return updObj(state, {error: true});
+};
+
+const setIng = (state, action) => {
+    return updObj(state, {
+        ingredients: {
+            salad: action.ingredients.salad,
+            dressing: action.ingredients.dressing,
+            tomato: action.ingredients.tomato,
+            onion: action.ingredients.onion,
+            meat: action.ingredients.meat
+        },
+        totalCost: 2.30,
+        error: false
+    });
+}
+
+const fetchIngFailed = (state, action) => {
+    return updObj(state, {error: true});
+}
+
+const reducer = (state = initialState, action) => {
+    switch (action.type){
+        case actionTypes.ADD_ING: return addIng(state, action)
+        case actionTypes.REMOVE_ING: return removeIng(state, action)       
+        case actionTypes.SET_ING: return setIng(state, action)
+        case actionTypes.FETCH_ING_FAILED: return fetchIngFailed(state, action)
         default:
             return state;
     }
