@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import classes from './Auth.css';
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
+import * as actions from '../../store/actions/index';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+import axios from '../../axios-orders';
 
 class Auth extends Component {
 
@@ -83,6 +87,11 @@ class Auth extends Component {
         this.setState({controls: updControls});
     }
 
+    loginHandler = (event) => {
+        event.preventDefault();
+        this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value)
+    }
+
     render () {
         const formELementsArray = [];
         for (let key in this.state.controls){
@@ -104,13 +113,22 @@ class Auth extends Component {
 
         return (
             <div className={classes.Auth}>
-                <form>
+                <form onSubmit={this.loginHandler}>
                     {form}
                     <Button buttonType="Success">Submit</Button>
                 </form>
             </div>
         )
-    }
-}
+    };
+};
 
-export default Auth
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuth: (email, password) => dispatch(actions.auth(email, password)),
+        onAuthBegin: () => dispatch(),
+        onAuthSuccess: () => dispatch(),
+        onAuthFailed: () => dispatch()
+    };
+};
+
+export default connect(null, mapDispatchToProps)(withErrorHandler(Auth, axios));
