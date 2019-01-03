@@ -15,3 +15,4 @@ export const FETCH_ORD_FAILED = 'FETCH_ORD_FAILED';
 export const AUTH_BEGIN = 'AUTH_BEGIN';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_FAILED = 'AUTH_FAILED';
+export const AUTH_LOGOUT = 'AUTH_LOGOUT';
