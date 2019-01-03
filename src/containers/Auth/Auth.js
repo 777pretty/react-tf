@@ -7,6 +7,7 @@ import Button from '../../components/UI/Button/Button';
 import * as actions from '../../store/actions/index';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import axios from '../../axios-orders';
+import Spinner from '../../components/UI/Spinner/Spinner';
 
 class Auth extends Component {
 
@@ -108,7 +109,9 @@ class Auth extends Component {
             })
         }
 
-        const form = formELementsArray.map(formElement => (
+        let form = <Spinner />
+        if (!this.props.loading){
+        form = formELementsArray.map(formElement => (
             <Input  key={formElement.id}elementType={formElement.config.elementType}
                     elementConfig={formElement.config.elementConfig}
                     value={formElement.config.value} 
@@ -116,7 +119,7 @@ class Auth extends Component {
                     shouldValidate={formElement.config.validation}
                     touched={formElement.config.touched}
                     changed={(event) => this.inputChangedHandler(event, formElement.id)}/>
-        ));
+        ))};
 
         return (
             <div className={classes.Auth}>
@@ -132,6 +135,12 @@ class Auth extends Component {
     };
 };
 
+const mapStateToProps = state => {
+    return {
+        loading: state.auth.loading
+    };
+};
+
 const mapDispatchToProps = dispatch => {
     return {
         onAuth: (email, password, alreadySigned) => dispatch(actions.auth(email, password, alreadySigned)),
@@ -141,4 +150,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(null, mapDispatchToProps)(withErrorHandler(Auth, axios));
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Auth, axios));
