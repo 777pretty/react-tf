@@ -41,8 +41,7 @@ export const auth = (email, password, alreadySigned) => {
                  dispatch(authSuccess(res.data.idToken, res.data.localId));
              })
              .catch(err => {
-                 console.log(err);
-                 dispatch(authFailed(err));
+                 dispatch(authFailed(err.response.data.error));
              });
     };
 };
