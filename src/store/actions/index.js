@@ -6,7 +6,8 @@ export { purchaseTortilla,
          fetchOrders } from './order';
 export { auth,
          logout,
-         setAuthRedirectPath
+         setAuthRedirectPath,
+         authStateCheck
         //  authBegin,
         //  authSuccess,
         //  authFailed
