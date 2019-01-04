@@ -4,7 +4,8 @@ import { updObj } from '../utility';
 const initialState = {
     ingredients: null,
     totalCost: 2.30,
-    error: false
+    error: false,
+    building: false
 };
 
 const ING_COST = {
@@ -20,7 +21,8 @@ const addIng = (state, action) => {
             const updIngredients = updObj(state.ingredients, updIngredient);
             const updState = {
                     ingredients: updIngredients,
-                    totalCost: state.totalCost + ING_COST[action.ingredientName]
+                    totalCost: state.totalCost + ING_COST[action.ingredientName],
+                    building: true
             }
         return updObj(state, updState);
 };
@@ -30,7 +32,8 @@ const removeIng = (state, action) => {
             const updIngredientsR = updObj(state.ingredients, updIngredientR);
             const updStateR = {
                     ingredients: updIngredientsR,
-                    totalCost: state.totalCost - ING_COST[action.ingredientName]
+                    totalCost: state.totalCost - ING_COST[action.ingredientName],
+                    building: true
             }
         return updObj(state, updStateR);
 };
@@ -45,7 +48,8 @@ const setIng = (state, action) => {
             meat: action.ingredients.meat
         },
         totalCost: 2.30,
-        error: false
+        error: false,
+        building: false
     });
 }
 

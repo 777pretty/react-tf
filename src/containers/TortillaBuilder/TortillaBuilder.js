@@ -90,7 +90,8 @@ class TortillaBuilder extends Component {
             reviewing: true
         })
         } else {
-            this.props.history.push('/auth')
+            this.props.onRedirectPathSet('/checkout');
+            this.props.history.push('/auth');
         }
     }
     
@@ -160,7 +161,8 @@ const mapDispatchToProps = dispatch => {
         onIngredientAdded: (ingName) => dispatch(actions.addIng(ingName)),
         onIngredientRemoved: (ingName) => dispatch(actions.removeIng(ingName)),
         onIngredientInit: () => dispatch(actions.initIng()),
-        onPurchaseInit: () => dispatch(actions.purchaseInit())
+        onPurchaseInit: () => dispatch(actions.purchaseInit()),
+        onRedirectPathSet: (path) => dispatch(actions.setAuthRedirectPath(path))
     };
 }
 

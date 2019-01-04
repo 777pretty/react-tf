@@ -46,6 +46,12 @@ class Auth extends Component {
         alreadySigned: false
     }
 
+    componentDidMount() {
+        if (!this.props.buildingTortilla && this.props.authRedirectPath !== "/") {
+            this.props.onAuthRedirectPathSet();
+        }
+    }
+
     checkValidity(value, rules){
         let isValid =  true;
         if (!rules){
@@ -132,7 +138,7 @@ class Auth extends Component {
 
         let authRedirect = null;
         if (this.props.alreadySigned){
-            authRedirect = <Redirect to="/" />
+            authRedirect = <Redirect to={this.props.authRedirectPath} />
         }
 
         return (
@@ -155,16 +161,16 @@ const mapStateToProps = state => {
     return {
         loading: state.auth.loading,
         error: state.auth.error,
-        alreadySigned: state.auth.token !== null
+        alreadySigned: state.auth.token !== null,
+        buildingTortilla: state.tortillaBuilder.building,
+        authRedirectPath: state.auth.authRedirectPath
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         onAuth: (email, password, alreadySigned) => dispatch(actions.auth(email, password, alreadySigned)),
-        onAuthBegin: () => dispatch(),
-        onAuthSuccess: () => dispatch(),
-        onAuthFailed: () => dispatch()
+        onAuthRedirectPathSet: () => dispatch(actions.setAuthRedirectPath("/"))
     };
 };
 
