@@ -27,7 +27,7 @@ class Layout extends Component {
     render(){
     return(
     <Aukz>
-        <Toolbar alreadyAuth={this.props.alreadyAuthenticated}
+        <Toolbar alreadyAuth={this.props.alreadySigned}
                  offnen={this.sideDrawerOpenHandler}/>
         <SideDrawer open={this.state.dispSideDrawer} 
                     shut={this.sideDrawerShutHandler}
@@ -42,7 +42,7 @@ class Layout extends Component {
 
 const mapStateToProps = state => {
     return {
-        alreadyAuthenticated: state.auth.token !== null
+        alreadySigned: state.auth.token !== null
     };
 };
 
