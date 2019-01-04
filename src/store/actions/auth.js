@@ -26,7 +26,7 @@ export const authFailed = (error) => {
 export const logout = () => {
     return {
         type: actionTypes.AUTH_LOGOUT
-    }
+    };
 };
 
 export const checkAuthTimeout = (expirationTime) => {
