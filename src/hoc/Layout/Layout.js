@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import Aukz from '../Aukz/Aukz';
 import classes from './Layout.css';
@@ -26,7 +27,8 @@ class Layout extends Component {
     render(){
     return(
     <Aukz>
-        <Toolbar offnen={this.sideDrawerOpenHandler}/>
+        <Toolbar alreadyAuth={this.props.alreadyAuthenticated}
+                 offnen={this.sideDrawerOpenHandler}/>
         <SideDrawer open={this.state.dispSideDrawer} 
                     shut={this.sideDrawerShutHandler}
                     onClick={this.sideDrawerShutHandler}/>
@@ -38,4 +40,10 @@ class Layout extends Component {
 }
 };
 
-export default Layout;
+const mapStateToProps = state => {
+    return {
+        alreadyAuthenticated: state.auth.token !== null
+    };
+};
+
+export default connect(mapStateToProps, null)(Layout);
