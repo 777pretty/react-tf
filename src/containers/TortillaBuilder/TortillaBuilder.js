@@ -85,10 +85,15 @@ class TortillaBuilder extends Component {
     // }
 
     reviewHandler = () => {
+        if (this.props.alreadySigned) {
         this.setState({
             reviewing: true
         })
+        } else {
+            this.props.history.push('/auth')
+        }
     }
+    
 
     reviewOutHandler = () => {
         this.setState({
@@ -99,9 +104,10 @@ class TortillaBuilder extends Component {
     reviewContinueHandler = () => {
             this.props.onPurchaseInit();
             this.props.history.push('/checkout');
-    }
+    };
 
     render() {
+
         const disabledInf = {
             ...this.props.ings
         }
@@ -120,7 +126,8 @@ class TortillaBuilder extends Component {
                                 disabled={disabledInf}
                                 cost={this.props.cost}
                                 ordered={this.reviewHandler}
-                                orderable={this.updateOrderableState(this.props.ings)}/>
+                                orderable={this.updateOrderableState(this.props.ings)}
+                                alreadySig={this.props.alreadySigned}/>
                         </Aukz>;
             orderReview = <OrderReview  ingredients={this.props.ings}
                                         reviewCanceled={this.reviewOutHandler}
@@ -143,7 +150,8 @@ const mapStateToProps = state => {
     return {
         ings: state.tortillaBuilder.ingredients,
         cost: state.tortillaBuilder.totalCost,
-        error: state.tortillaBuilder.error
+        error: state.tortillaBuilder.error,
+        alreadySigned: state.auth.token !== null
     };
 }
 

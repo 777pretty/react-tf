@@ -26,7 +26,7 @@ const buildControls = (props) => (
         <button className={classes.OrderButton} 
                 disabled={!props.orderable} 
                 onClick={props.ordered}>
-                CONFIRM ORDER</button>
+                {props.alreadySig ? 'CONFIRM ORDER' : 'FIRST, SIGN UP'}</button>
     </div>
 )
 
