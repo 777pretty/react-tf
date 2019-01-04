@@ -113,7 +113,7 @@ class ContactData extends Component {
             orderData: formData
         }
        
-        this.props.onTortillaOrder(order);
+        this.props.onTortillaOrder(order, this.props.token);
         
     }
 
@@ -209,13 +209,14 @@ const mapStateToProps = state => {
     return {
         ings: state.tortillaBuilder.ingredients,
         cost: state.tortillaBuilder.totalCost,
-        loading: state.order.loading
+        loading: state.order.loading,
+        token: state.auth.token
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onTortillaOrder: (orderData) => dispatch(actions.purchaseTortilla(orderData)) 
+        onTortillaOrder: (orderData, token) => dispatch(actions.purchaseTortilla(orderData, token)) 
     };
 };
 
