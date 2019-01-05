@@ -5,9 +5,6 @@ import Button from '../../UI/Button/Button'
 
 class OrderReview extends Component {
     // this doesnt have to be a stateful component anymore
-    componentWillUpdate(){
-        console.log('[OrderReview] WillUpdate')
-    }
 
     render(){
 

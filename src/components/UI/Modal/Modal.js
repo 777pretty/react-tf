@@ -10,12 +10,7 @@ class Modal extends Component {
                 return nextProps.disp !== this.props.disp || nextProps.children !== this.props.children
         }
 
-        componentWillUpdate(){
-                return console.log('[Modal] WillUpdate')
-        }
-
         render(){
-
 
         return(
         <Aukz>
