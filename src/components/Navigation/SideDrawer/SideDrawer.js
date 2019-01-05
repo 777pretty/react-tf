@@ -21,7 +21,7 @@ const sideDrawer = (props) => {
                 <Logo />
             </div>
             <nav>
-                <NavigationItems alreadySigned={props.alreadyAuth} />
+                <NavigationItems alreadySigned={props.alreadySigned} />
             </nav>
         </div>
         </Aukz>

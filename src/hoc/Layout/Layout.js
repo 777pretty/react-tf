@@ -12,25 +12,27 @@ class Layout extends Component {
         dispSideDrawer: false
     }
 
-    sideDrawerOpenHandler = () => {
-        this.setState((prevState) => {
-           return {dispSideDrawer: !prevState.dispSideDrawer}
-        })
-    }    
-
     sideDrawerShutHandler = () => {
         this.setState({
             dispSideDrawer: false
         })
     }
 
+    sideDrawerOpenHandler = () => {
+        this.setState((prevState) => {
+           return {dispSideDrawer: !prevState.dispSideDrawer}
+        })
+    }    
+
+
     render(){
     return(
     <Aukz>
-        <Toolbar alreadyAuth={this.props.alreadySigned}
+        <Toolbar alreadySigned={this.props.alreadySigned}
                  offnen={this.sideDrawerOpenHandler}/>
         <SideDrawer open={this.state.dispSideDrawer} 
                     shut={this.sideDrawerShutHandler}
+                    alreadySigned={this.props.alreadySigned}
                     onClick={this.sideDrawerShutHandler}/>
         <main className={classes.Content}>
             {this.props.children}
