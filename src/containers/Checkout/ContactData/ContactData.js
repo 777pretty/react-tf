@@ -110,7 +110,8 @@ class ContactData extends Component {
         const order = {
             ingredients: this.props.ings,
             cost: this.props.cost,
-            orderData: formData
+            orderData: formData,
+            userId: this.props.userId
         }
        
         this.props.onTortillaOrder(order, this.props.token);
@@ -210,7 +211,8 @@ const mapStateToProps = state => {
         ings: state.tortillaBuilder.ingredients,
         cost: state.tortillaBuilder.totalCost,
         loading: state.order.loading,
-        token: state.auth.token
+        token: state.auth.token,
+        userId: state.auth.userId
     };
 };
 
