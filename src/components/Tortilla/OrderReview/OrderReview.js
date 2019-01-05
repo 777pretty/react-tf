@@ -1,20 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import Aukz from '../../../hoc/Aukz/Aukz'
-import Button from '../../UI/Button/Button'
+import Aukz from '../../../hoc/Aukz/Aukz';
+import Button from '../../UI/Button/Button';
+
+
 
 class OrderReview extends Component {
     // this doesnt have to be a stateful component anymore
-
     render(){
-
-        const ingredientsReview = Object.keys(this.props.ingredients)
+    const ingredientsReview = Object.keys(this.props.ingredients)
         .map(ingKey => {
             return <li key={ingKey}> <span style={{textTransform: 'capitalize'}}>{ingKey}</span>: {this.props.ingredients[ingKey]} </li>
         })
-
-
-        return(
+        return (
             <Aukz>
              <h2>Review</h2>
              <p>For your tasty Tortilla™ you picked the following ingredients:</p>
@@ -28,7 +26,7 @@ class OrderReview extends Component {
            </Aukz>
 
         )
-    }
+}
 }
 
 export default OrderReview

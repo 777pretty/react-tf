@@ -31,7 +31,8 @@ class TortillaBuilder extends Component {
     }
 
     componentDidMount(){
-               this.props.onIngredientInit();
+        console.log(this.props);
+        this.props.onIngredientInit();
     };
 
     updateOrderableState(ingredients){
