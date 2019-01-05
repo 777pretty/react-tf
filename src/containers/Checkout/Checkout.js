@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 import CheckoutReview from '../../components/Order/CheckoutReview/CheckoutReview';
 import ContactData from './ContactData/ContactData';
-import * as actions from '../../store/actions/index';
 
 
 class Checkout extends Component {
