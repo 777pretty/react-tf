@@ -15,8 +15,8 @@ const sideDrawer = (props) => {
 
     return (
         <Aukz>
-        <Backdrop disp={props.open} cliked={props.shut} />
-        <div className={attachedClasses.join(' ')}>
+        <Backdrop disp={props.open} clickd={props.shut} />
+        <div className={attachedClasses.join(' ')} onClick={props.shut}>
             <div className={classes.Logo}>
                 <Logo />
             </div>
