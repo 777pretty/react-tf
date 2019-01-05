@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
-import { updObj } from '../utility';
+import { updObj } from '../../shared/utility';
 
 const initialState = {
     orders: [],
