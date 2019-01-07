@@ -10,6 +10,15 @@
     overflow-y: auto;
 }
 
+.Tortilla p {
+    text-align: center; 
+}
+
+.Tortilla span {
+    background-color: rgb(175, 158, 127, 0.6);
+    padding: 2px;
+}
+
 @media (max-width: 499px){
     .Tortilla {
         height: 250px;
