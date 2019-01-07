@@ -9,6 +9,10 @@
     box-sizing: border-box;
     /* background-color: rgb#F5DEB3; */
     background-color: rgb(175, 158, 127, 0.6);
+    position: absolute;
+     left: 50%;
+      top: 35%;
+    transform: translate(-50%, -50%);
 }
 
 
