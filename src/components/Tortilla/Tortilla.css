@@ -35,7 +35,7 @@
     color: #8F5E1E;
     font-size: 30px;
     font-weight: 700;
-    letter-spacing: 8px;
+    letter-spacing: 4px;
    
     animation: text 3s 1;
     text-align: center;
@@ -50,17 +50,40 @@
       /* margin-bottom: -40px; */
     }
     30%{
-      letter-spacing: 25px;
+      letter-spacing: 15px;
       /* margin-bottom: -40px; */
     }
     85%{
-      letter-spacing: 8px;
+      letter-spacing: 4px;
       /* margin-bottom: -40px; */
     }
   }
+
+@media (max-width: 999px){
+    .Text1 {
+        animation: none;
+}
+}
+
+@media (max-width: 649px){
+    .Text1 {
+        font-size: 20px;
+    }
+}
 
 @media (max-width: 499px){
     .Tortilla {
         height: 250px;
     }
+
+
+    .Text1 {
+        font-size: 16px;
+        letter-spacing: 1px;
+        font-weight: 300;
+        animation: none;
+    }
+
+
+
 }
