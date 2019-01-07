@@ -4,6 +4,10 @@
     margin: auto;
 }
 
+.CheckoutReview Button {
+    font-size: 25px;
+}
+
 
 /* @media (min-width: 600px) {
     .CheckoutReview {

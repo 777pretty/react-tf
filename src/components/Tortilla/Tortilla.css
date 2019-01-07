@@ -14,10 +14,50 @@
     text-align: center; 
 }
 
-.Tortilla span {
-    background-color: rgb(175, 158, 127, 0.6);
-    padding: 2px;
-}
+
+
+  .Container{
+    text-align: center;
+    position: relative;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    margin: auto;
+    text-align: center;
+  }
+  .Container span{
+    text-transform: uppercase;
+    display: block;
+  }
+  .Text1{
+    text-align: center;
+    color: #8F5E1E;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 8px;
+   
+    animation: text 3s 1;
+    text-align: center;
+    margin: auto;
+  }
+
+  
+  
+  @keyframes text {
+    0%{
+      color: rgba(0, 0, 0, 0.445);
+      /* margin-bottom: -40px; */
+    }
+    30%{
+      letter-spacing: 25px;
+      /* margin-bottom: -40px; */
+    }
+    85%{
+      letter-spacing: 8px;
+      /* margin-bottom: -40px; */
+    }
+  }
 
 @media (max-width: 499px){
     .Tortilla {

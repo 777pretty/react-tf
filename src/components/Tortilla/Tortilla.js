@@ -15,7 +15,14 @@ const tortilla = ( props ) => {
                return arr.concat(el)
            }, [])
         if (transformedIngredients.length === 0){
-            transformedIngredients = <p><span>Please, start adding ingredients</span></p>
+            transformedIngredients =<div>
+                                        
+                                        <br />
+                                        <div className={classes.Container}>
+                                            <p className={classes.Text1}>Please, start adding ingredients</p>
+                                            {/* <p className={classes.Text2}><span></span></p> */}
+                                        </div>
+                                    </div>    
         }
     return (
         <div className={classes.Tortilla}>
