@@ -10,10 +10,21 @@ class Checkout extends Component {
 
     checkoutCancelledHandler = () => {
         this.props.history.goBack();
+        setTimeout(function() {
+            window.scroll({ 
+                top: -3000
+              });
+          }, 100);
     }
+
 
     checkoutContinuedHandler = () => {
         this.props.history.replace('/checkout/contact-data');
+        setTimeout(function() {
+            window.scroll({ 
+                top: 3000
+              });
+          }, 100);
     }
 
     render(){
